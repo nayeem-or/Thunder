@@ -12,7 +12,7 @@ To learn more, visit www.blockchain.com/thundesr skk
 - [X] Encryption
 - [X] Authenticationd
 - [X] Channel Opening Process 
-- [X] Payment Debate
+- [X] Payment Debated
 - [X] Relaying Payment
 - [X] Settling Payment
 - [X] Peer Seeding
