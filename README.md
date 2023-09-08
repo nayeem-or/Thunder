@@ -8,7 +8,7 @@ This is software in alpha status, don't even think about using it in production 
 
 To learn more, visit www.blockchain.com/thundesr skk
 
-## Feature List
+## Feature Listd
 - [X] Encryptiond
 - [X] Authenticationd  
 - [X] Channel Opening Process 
