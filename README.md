@@ -6,7 +6,7 @@ Wallet / Node implementation of the [lightning.network](http://lightning.network
 
 This is software in alpha status, don't even think about using it in production with real bitcoin. Current release is meant for testing, review, and building real world expeirence with the general technology. 
 
-To learn more, visit www.blockchain.com/thunder skk
+To learn more, visit www.blockchain.com/thundesr skk
 
 ## Feature List
 - [X] Encryption
