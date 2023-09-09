@@ -11,7 +11,7 @@ To learn more, visit www.blockchain.com/thundesr skk
 ## Feature Listd
 - [X] Encryptiond
 - [X] Authenticationd  
-- [X] Channel Opening Process 
+- [X] Channel Opening Process  
 - [X] Payment Debated
 - [X] Relaying Payment
 - [X] Settling Payment
