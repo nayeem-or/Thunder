@@ -22,14 +22,14 @@ jobs:
     # If you are using GitHub Enterprise, please substitute <self-hosted> with your Enterprise runner name
     #runs-on: <self-hosted>
     container:
-            # Use this as the image if you are using GitHub cloud
-            # This sample script defaults to GitHub cloud. Substitute the User's login ID for <User_ID> ,<User_ID> must be in lower case
-            image: ghcr.io/<User_ID>/icr-github:latest
+      # Use this as the image if you are using GitHub cloud
+      # This sample script defaults to GitHub cloud. Substitute the User's login ID for <User_ID> ,<User_ID> must be in lower case
+      image: ghcr.io/<User_ID>/icr-github:latest
 
-            # Use this as the image if you are using GitHub Enterprise
-            # Substitute <ge.openrefactory.com> with your Enterprise URL.
-            # Substitute the User's login ID for <User_ID>
-            #image: docker.ge.openrefactory.com/<User_ID>/Project_Name/icr-github:latest
+      # Use this as the image if you are using GitHub Enterprise
+      # Substitute <ge.openrefactory.com> with your Enterprise URL.
+      # Substitute the User's login ID for <User_ID>
+      #image: docker.ge.openrefactory.com/<User_ID>/Project_Name/icr-github:latest
              
     steps:
       # Comment out this line below if you are using GitHub Enterprise
