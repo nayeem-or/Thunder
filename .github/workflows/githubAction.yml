@@ -6,7 +6,7 @@ name: Openrefactory_CI
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "master" ]
+    branches: [ "0.2-hibernate" ]
     
 env:
   # Use this as the REGISTRY if you are using GitHub cloud. This sample script defaults to GitHub cloud
