@@ -1,0 +1,48 @@
+# This is a basic workflow to help you get started with iCR CI/CD
+# If using GitHub Enterprise, this example will use ge.openrefactory.com as the sample URL
+name: Openrefactory_CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+    
+env:
+  # Use this as the REGISTRY if you are using GitHub cloud. This sample script defaults to GitHub cloud
+  REGISTRY: ghcr.io
+
+  # Use this as the REGISTRY if you are using GitHub Enterprise
+  # Substitute <ge.openrefactory.com> with your Enterprise URL
+  #REGISTRY: docker.ge.openrefactory.com 
+
+jobs:
+  OR_JOB:
+    runs-on: ubuntu-18.04 # If it's not working use ubuntu-latest
+    # If you are using GitHub Enterprise, please substitute <self-hosted> with your Enterprise runner name
+    #runs-on: <self-hosted>
+    container:
+            # Use this as the image if you are using GitHub cloud
+            # This sample script defaults to GitHub cloud. Substitute the User's login ID for <User_ID> ,<User_ID> must be in lower case
+            image: ghcr.io/<User_ID>/icr-github:latest
+
+            # Use this as the image if you are using GitHub Enterprise
+            # Substitute <ge.openrefactory.com> with your Enterprise URL.
+            # Substitute the User's login ID for <User_ID>
+            #image: docker.ge.openrefactory.com/<User_ID>/Project_Name/icr-github:latest
+             
+    steps:
+      # Comment out this line below if you are using GitHub Enterprise
+      - uses: actions/checkout@v2 
+      - name: orjob
+        run: |
+          /workspace/configure_run.sh ${{ github.ref_name }} \
+          ${{ github.repositoryUrl }} \
+          ${{ secrets.ICR_URL }} \
+          ${{ secrets.ICR_USER_NAME }} \
+          ${{ secrets.ICR_CI_CD_ACCESS_TOKEN }} \
+          ${{ secrets.PERSONAL_ACCESS_TOKEN }} \
+          ${{ secrets.MAIL_ADDRESS }} \
+	        ${{ secrets.LANGUAGE }} \
+          ${{ secrets.LANGUAGE_VERSION }} 
+        shell: bash
