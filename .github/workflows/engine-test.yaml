@@ -28,6 +28,6 @@ jobs:
       with:
         commit_message: "Pushed analysis results from workflow run ${{ github.sha }}"
         branch: ${{ github.ref }}
-        file_pattern: "workspace/result/*"
+        file_pattern: ${{ github.workspace }}/result/*
     
 
