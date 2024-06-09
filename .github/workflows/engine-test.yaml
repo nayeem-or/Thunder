@@ -10,15 +10,18 @@ jobs:
     steps:
     - uses: actions/checkout@v4  # Use the latest version
 
-    - name: Print current working directory
-      run: pwd
-      shell: bash
-    - name: Print current working directory
-      run: echo $pwd
-      shell: bash
+    - name: Pull icr image
+      run: |
+        docker pull openrefactory/icr-java-engine:4.2.0
 
-    - name: Print current working directory
-      run: ls -la ${{ github.workspace }}
-      shell: bash
+    - name: Run static analysis tool with environment variable
+      run: |
+        docker run --rm \
+            --env LICENSE_KEY=afsdfasdffds \
+            --mount type=bind,source=${{ github.workspace }},target=/workspace/source \
+            openrefactory/icr-java-engine:4.2.0 /bin/bash -c "
+              echo 'Checking /workspace/source';
+              ls -la /workspace/source;
+              file /workspace/source"
     
 
