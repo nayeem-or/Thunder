@@ -10,17 +10,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4  # Use the latest version
 
-    - name: Set up Docker Buildx (optional)
-      uses: docker/setup-buildx-action@v1  # Optional if needed for building other images
+    - name: Print current working directory
+      run: pwd
+      shell: bash
+    - name: Print current working directory
+      run: echo $pwd
+      shell: bash
 
-    - name: Pull icr image
-      run: |
-        docker pull openrefactory/icr-java-engine:4.2.0
-
-    - name: Run static analysis tool with environment variable
-      run: |
-        docker run --env LICENSE_KEY=H8LW-V566-APNJ-TFO \
-           openrefactory/icr-java-engine:4.2.0 \
-          --mount type=bind,source=${{ github.workspace }},target=/workspace/source \
-          --mount type=bind,source=${{ github.workspace }},target=/workspace/result \
+    - name: Print current working directory
+      run: echo ${{ github.workspace }}
+      shell: bash
+    
 
