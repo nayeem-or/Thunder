@@ -23,14 +23,6 @@ jobs:
             --mount type=bind,source=${{ github.workspace }}/result,target=/workspace/result \
             openrefactory/icr-java-engine:4.2.0
 
-    - name: Push results to triggered branch (optional)
-      uses: crazymax/ghaction-git-push@v1
-      with:
-        github_token: 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
-        branch: ${{ github.ref }}  # Use the branch that triggered the workflow
-        folder: results  # Directory containing analysis results (relative to workspace)
-        message: "Pushed analysis results from workflow run ${{ github.sha }}"
-
     - name: Commit and push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
