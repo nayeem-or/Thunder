@@ -18,7 +18,7 @@ jobs:
       shell: bash
 
     - name: Print current working directory
-      run: echo ${{ github.workspace }}
+      run: ls -la ${{ github.workspace }}
       shell: bash
     
 
