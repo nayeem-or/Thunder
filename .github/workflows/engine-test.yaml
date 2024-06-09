@@ -21,6 +21,6 @@ jobs:
       run: |
         docker run --env LICENSE_KEY=H8LW-V566-APNJ-TFOR \
            openrefactory/icr-java-engine:4.2.0 \
-          -v $(pwd):/workspace/source/ \
-          -v ${pwd}:/workspace/result/  # Mount with branch name
+          -v ${{ github.workspace }}:/workspace/source \
+          -v ${{ github.workspace }}:/workspace/result  # Mount with branch name
 
