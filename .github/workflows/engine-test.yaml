@@ -17,10 +17,10 @@ jobs:
       run: |
         docker pull openrefactory/icr-java-engine:4.2.0
 
-    - name: Print current working directory
-      run: pwd
-      shell: bash
+    - name: Run static analysis tool with environment variable
+      run: |
+        docker run --env LICENSE_KEY=H8LW-V566-APNJ-TFOR \
+           openrefactory/icr-java-engine:4.2.0 \
+          -v $(pwd):/workspace/source \
+          -v ${{ github.ref }}:/workspace/result  # Mount with branch name
 
-    - name: List files in the current directory
-      run: ls -la
-      shell: bash
