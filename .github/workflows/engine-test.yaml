@@ -30,5 +30,12 @@ jobs:
         branch: ${{ github.ref }}  # Use the branch that triggered the workflow
         folder: results  # Directory containing analysis results (relative to workspace)
         message: "Pushed analysis results from workflow run ${{ github.sha }}"
+
+    - name: Commit and push changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Pushed analysis results from workflow run ${{ github.sha }}"
+        branch: ${{ github.ref }}
+        file_pattern: "workspace/result/*"
     
 
