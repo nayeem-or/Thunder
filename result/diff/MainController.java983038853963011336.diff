@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/MainController.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/MainController.java
+@@ -323,7 +323,7 @@
+ 
+     public void settingsClicked (ActionEvent event) {
+         Main.OverlayUI<WalletSettingsController> screen = Main.instance.overlayUI("wallet_settings.fxml");
+-        screen.controller.initialize(null);
++        screen.getController().initialize(null);
+     }
+ 
+     public void restoreFromSeedAnimation () {
