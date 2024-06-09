@@ -19,6 +19,7 @@ jobs:
         docker run --rm \
             --env LICENSE_KEY=H8LW-V566-APNJ-TFOR \
             --mount type=bind,source=${{ github.workspace }},target=/workspace/source \
+            --mount type=bind,source=${{ github.workspace }}/result,target=/workspace/result \
             openrefactory/icr-java-engine:4.2.0
     
 
