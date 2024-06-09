@@ -19,8 +19,8 @@ jobs:
 
     - name: Run static analysis tool with environment variable
       run: |
-        docker run --env LICENSE_KEY=H8LW-V566-APNJ-TFOR \
+        docker run --env LICENSE_KEY=H8LW-V566-APNJ-TFO \
            openrefactory/icr-java-engine:4.2.0 \
-          -v ${{ github.workspace }}:/workspace/source \
-          -v ${{ github.workspace }}:/workspace/result  # Mount with branch name
+          --mount type=bind,source=${{ github.workspace }},target=/workspace/source \
+          --mount type=bind,source=${{ github.workspace }},target=/workspace/result \
 
