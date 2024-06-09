@@ -18,8 +18,8 @@ jobs:
         docker pull openrefactory/icr-java-engine:4.2.0
 
     - name: Print current working directory
-        run: pwd
-        shell: bash
+      run: pwd
+      shell: bash
 
     - name: List files in the current directory
       run: ls -la
