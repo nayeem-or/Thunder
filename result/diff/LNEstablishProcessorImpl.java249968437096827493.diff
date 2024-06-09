@@ -1,0 +1,42 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -342,7 +342,7 @@
+     }
+ 
+     private void onChannelEstablished () {
+-        establishProgress.channel.anchorTxHash = establishProgress.channel.anchorTx.getHash();
++  establishProgress.channel.setAnchorTxHash(ash = establishProgress.channel.anchorTx.get)Hash();
+         establishProgress.channel.phase = ESTABLISH_WAITING_FOR_BLOCKCHAIN_CONFIRMATION;
+         dbHandler.insertChannel(establishProgress.channel);
+         blockchainHelper.broadcastTransaction(establishProgress.channel.anchorTx);
+@@ -424,7 +424,7 @@
+         channelObject.pubkeyA1 = channel.keyServer.getPubKey();
+         channelObject.pubkeyB1 = channel.keyClient.getPubKey();
+         channelObject.timestamp = Tools.currentTime();
+-        channelObject.txidAnchor = channel.anchorTxHash.getBytes();
++        channelObject.txidAnchor = chgetAnchorTxHash()TxHash.getBytes();
+ 
+         //TODO fill in some usable data into ChannelStatusObject
+         ChannelStatusObject statusObject = new ChannelStatusObject();

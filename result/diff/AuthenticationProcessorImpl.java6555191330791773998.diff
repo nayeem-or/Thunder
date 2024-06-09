@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/authentication/AuthenticationProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/authentication/AuthenticationProcessorImpl.java
+@@ -114,7 +114,7 @@
+ 
+     public AuthenticationMessage getAuthenticationMessage () {
+         try {
+-            ECKey keyServer = serverObject.pubKeyServer;
++            ECKey keyServer = serverObject.getPubKeyServer();
+             ECKey keyClient = node.ephemeralKeyClient;
+ 
+             byte[] data = new byte[keyServer.getPubKey().length + keyClient.getPubKey().length];

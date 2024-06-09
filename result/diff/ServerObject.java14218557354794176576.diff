@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
+@@ -5,7 +5,7 @@
+ public class ServerObject {
+     public ECKey pubKeyServer;
+ 
+-    public String hostServer;
++    private String hostServer;
+     public int portServer;
+ 
+     public LNConfiguration configuration = new LNConfiguration();
+@@ -55,4 +55,12 @@
+     public interface OnConnectionCloseListener {
+         void onClose ();
+     }
++
++	public String getHostServer() {
++		return hostServer;
++	}
++
++	public void setHostServer(String hostServer) {
++		this.hostServer = hostServer;
++	}
+ }

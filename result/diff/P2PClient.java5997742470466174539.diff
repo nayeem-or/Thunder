@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/nio/P2PClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/nio/P2PClient.java
+@@ -74,7 +74,7 @@
+         } catch (Exception e) {
+             if (!successfulConnection) {
+                 //Don't notify a previously successful connection again..
+-                connectionListener.onFailure.execute();
++                connectionListener.getOnFailure().execute();
+             }
+             throw new RuntimeException(e);
+         }

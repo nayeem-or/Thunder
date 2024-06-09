@@ -1,0 +1,23 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/authentication/AuthenticationProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/authentication/AuthenticationProcessorImpl.java
+@@ -135,16 +135,16 @@
+             NoSuchAlgorithmException {
+ 
+         ECKey ecKey = ECKey.fromPublicOnly(authentication.pubKeyServer);
+-        if (node.nodeKey != null) {
++        if (node.getNodeKey() != null) {
+             //Must be an outgoing connection, check if the nodeKey is what we expect it to be
+-            if (!Arrays.equals(ecKey.getPubKey(), node.nodeKey.getPubKey())) {
++            if (!Arrays.equals(ecKey.getPubKey(), node.getNodeKey().getPubKey())) {
+                 //We connected to the wrong node?
+-                System.out.println("Connected to wrong node? Expected: " + node.nodeKey.getPubKeyHex() + ". Is: " + ecKey.getPublicKeyAsHex());
++                System.out.println("Connected to wrong node? Expected: " + node.getNodeKey().getPubKeyHex() + ". Is: " + ecKey.getPublicKeyAsHex());
+                 authenticationFailed();
+             }
+         }
+ 
+-        node.nodeKey = new NodeKey(ecKey);
++        node.setNodeKey(new NodeKey(ecKey));
+         ECKey pubKeyTempServer = node.ephemeralKeyServer;
+ 
+         byte[] data = new byte[ecKey.getPubKey().length + pubKeyTempServer.getPubKey().length];

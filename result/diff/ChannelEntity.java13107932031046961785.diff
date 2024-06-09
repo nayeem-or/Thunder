@@ -1,0 +1,22 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -88,7 +88,7 @@
+         channel.anchorTxHash = anchorTxHash;
+         channel.anchorTx = anchorTx;
+         channel.minConfirmationAnchor = minConfirmationAnchor;
+-        channel.channelStatus = toChannelStatus();
++        channel.setChannelStatus(toChannelStatus());
+         channel.channelSignatures = localChannelSignatures;
+         channel.phase = phase;
+         channel.closingSignatures = closingSignatures;
+@@ -112,8 +112,8 @@
+         anchorTx = channel.anchorTx;
+         anchorTxHash = channel.anchorTxHash;
+         minConfirmationAnchor = channel.minConfirmationAnchor;
+-        if (channel.channelStatus != null) {
+-            fromChannelStatus(channel.channelStatus);
++        if (channel.getChannelStatus() != null) {
++            fromChannelStatus(channel.getChannelStatus());
+         }
+         phase = channel.phase;
+     }

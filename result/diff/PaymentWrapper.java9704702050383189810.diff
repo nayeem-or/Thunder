@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/objects/PaymentWrapper.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/objects/PaymentWrapper.java
+@@ -14,7 +14,7 @@
+     public PaymentStatus statusReceiver;
+ 
+     public NodeKey sender;
+-    public NodeKey receiver;
++    private NodeKey receiver;
+ 
+     public PaymentWrapper () {
+ 
+@@ -58,4 +58,12 @@
+     public int hashCode () {
+         return paymentData != null ? paymentData.hashCode() : 0;
+     }
++
++	public NodeKey getReceiver() {
++		return receiver;
++	}
++
++	public void setReceiver(NodeKey receiver) {
++		this.receiver = receiver;
++	}
+ }

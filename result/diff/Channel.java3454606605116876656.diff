@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -195,7 +195,7 @@
+         keyClient = channel.keyServer;
+         channelStatus.addressClient = channel.channelStatus.addressServer;
+         channelStatus.revoHashClientCurrent = channel.channelStatus.revoHashServerCurrent;
+-        channelStatus.revoHashClientNext = channel.channelStatus.revoHashServerNext;
++        channelStatus.setRevoHashClientNext(channel.channelStatus.revoHashServerNext);
+         anchorTx = channel.anchorTx;
+         anchorTxHash = channel.anchorTxHash;
+ 

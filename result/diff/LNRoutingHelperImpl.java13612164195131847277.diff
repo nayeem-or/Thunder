@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNRoutingHelperImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNRoutingHelperImpl.java
+@@ -125,7 +125,7 @@
+             if (distanceT > distanceC) {
+                 distancesTo.put(otherNode, distanceC);
+                 costTo.put(otherNode, costTo.get(node) + channel.getFee(otherNode.array()));
+-                latencyTo.put(otherNode, latencyTo.get(node) + channel.latency);
++                latencyTo.put(otherNode, latencyTo.get(node) + channel.getLatency());
+ 
+                 List<ChannelStatusObject> currentRoute = new ArrayList<>(routeList.get(node));
+                 currentRoute.add(channel);

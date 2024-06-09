@@ -1,0 +1,15 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
+@@ -24,7 +24,11 @@
+ 
+     @Override
+     public void registerObserver (NodeObserver observer) {
+-        synchronized (observerList) {
++        
++		/* ********OpenRefactory Warning********
++		 Synchronization should be on a private final field
++		*/
++		synchronized (observerList) {
+             observerList.add(observer);
+             dataObjectMap.put(observer, new ArrayList<>());
+         }

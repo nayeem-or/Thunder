@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/ChannelStatusObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/ChannelStatusObject.java
+@@ -13,7 +13,7 @@
+     public byte[] pubkeyB;
+     public byte[] infoA;
+     public byte[] infoB;
+-    public int latency;
++    private int latency;
+     public int feeA;
+     public int feeB;
+ 
+@@ -168,4 +168,12 @@
+         result = 31 * result + timestamp;
+         return result;
+     }
++
++	public int getLatency() {
++		return latency;
++	}
++
++	public void setLatency(int latency) {
++		this.latency = latency;
++	}
+ }

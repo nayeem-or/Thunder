@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -129,7 +129,7 @@
+                 throw new LNPaymentException("timestampOpen is too far off. Calibrate your system clock. Diff: " + diff);
+             }
+             diff = payment.timestampRefund - payment.timestampOpen;
+-            if (diff > configuration.MAX_OVERLAY_REFUND * configuration.MAX_REFUND_DELAY * OnionObject.MAX_HOPS) {
++            if (diff > configuration.getMAX_OVERLAY_REFUND() * configuration.MAX_REFUND_DELAY * OnionObject.MAX_HOPS) {
+                 throw new LNPaymentException("Refund timeout is too large. Is: " + diff);
+             }
+             //TODO Think about how we can solve guessing here, about us being the final receiver..

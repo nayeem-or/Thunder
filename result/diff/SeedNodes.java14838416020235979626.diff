@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/SeedNodes.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/SeedNodes.java
+@@ -43,7 +43,7 @@
+         ClientObject node = new ClientObject();
+         node.init();
+         node.host = "localhost";
+-        node.port = Constants.STANDARD_PORT;
++        node.setPort(Constants.STANDARD_PORT);
+ 
+         PubkeyIPObject seed1 = new PubkeyIPObject();
+         seed1.hostname = "localhost";

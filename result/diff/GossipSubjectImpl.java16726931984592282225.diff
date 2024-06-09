@@ -1,0 +1,15 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
+@@ -93,7 +93,11 @@
+     }
+ 
+     private void addNewDataObjectToMap (NodeObserver nodeObserver, P2PDataObject dataObject) {
+-        synchronized (observerList) {
++        
++		/* ********OpenRefactory Warning********
++		 Synchronization should be on a private final field
++		*/
++		synchronized (observerList) {
+             for (NodeObserver nodeObserver1 : observerList) {
+                 if (nodeObserver == null || nodeObserver != nodeObserver1) {
+                     List<ByteBuffer> bufferList = dataObjectMap.get(nodeObserver1);

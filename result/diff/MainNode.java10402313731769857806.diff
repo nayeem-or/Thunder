@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
+@@ -53,7 +53,7 @@
+             //Use external hostname for now as a hack..
+             configuration.hostnameServer = getExternalIP();
+             ECKey key = new ECKey();
+-            configuration.serverKey = Tools.bytesToHex(key.getPrivKeyBytes());
++            configuration.setServerKey(Tools.bytesToHex(key.getPrivKeyBytes()));
+             // TODO: Verify that the public key corresponds to the private key when loading config from file
+             configuration.publicKey = key.getPublicKeyAsHex();
+             newConfiguration = true;
+@@ -64,7 +64,7 @@
+         ServerObject server = new ServerObject();
+         server.portServer = configuration.portServer;
+         server.hostServer = configuration.hostnameServer;
+-        server.pubKeyServer = ECKey.fromPrivate(Tools.hexStringToByteArray(configuration.serverKey));
++        server.pubKeyServer = ECKey.fromPrivate(Tools.hexStringToByteArray(configuration.getServerKey()));
+ 
+         //Currently we are only using an in-memory implementation of the DBHandler and a Wallet that is not holding real bitcoin
+         DBHandler dbHandler = new HibernateHandler();

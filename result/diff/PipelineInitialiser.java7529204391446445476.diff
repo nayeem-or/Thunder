@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/PipelineInitialiser.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/PipelineInitialiser.java
+@@ -31,7 +31,7 @@
+ 
+         if (serverMode) {
+             node = new ClientObject();
+-            node.isServer = true;
++            node.setIsServer(true);
+             node.nodeKey = null;
+         }
+ //        ch.pipeline().addLast(new DumpHexHandler());

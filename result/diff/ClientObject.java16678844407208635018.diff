@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
+@@ -20,7 +20,7 @@
+     //Encryption keys
+     public ECKey ephemeralKeyServer;
+     public ECKey ephemeralKeyClient;
+-    public ECDHKeySet ecdhKeySet;
++    private ECDHKeySet ecdhKeySet;
+ 
+     public ConnectionIntent intent = ConnectionIntent.MISC;
+     public ResultCommand resultCallback = new NullResultCommand();
+@@ -86,4 +86,12 @@
+                 ", isServer=" + isServer +
+                 '}';
+     }
++
++	public ECDHKeySet getEcdhKeySet() {
++		return ecdhKeySet;
++	}
++
++	public void setEcdhKeySet(ECDHKeySet ecdhKeySet) {
++		this.ecdhKeySet = ecdhKeySet;
++	}
+ }

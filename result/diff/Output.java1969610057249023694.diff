@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/blockexplorer/Output.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/blockexplorer/Output.java
+@@ -21,7 +21,7 @@
+         this.txIndex = txIndex;
+         this.script = script;
+         this.spent = spent;
+-        if (address != "") {
++        if (!("".equals(address))) {
+             spentToAddress = true;
+         }
+     }

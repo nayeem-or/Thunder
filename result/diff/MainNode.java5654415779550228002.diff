@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
+@@ -96,7 +96,7 @@
+                 buildChannelListener.await(30, TimeUnit.SECONDS);
+                 List<Channel> openChannel = dbHandler.getOpenChannel();
+                 for (Channel channel : openChannel) {
+-                    configuration.nodesToBuildChannelWith.add(channel.nodeKeyClient.getPubKeyHex());
++                    configuration.nodesToBuildChannelWith.add(channel.getNodeKeyClient().getPubKeyHex());
+                 }
+                 writeConfigurationFile(configuration);
+             } else {

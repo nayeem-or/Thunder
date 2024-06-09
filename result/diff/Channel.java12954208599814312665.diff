@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -164,7 +164,7 @@
+             anchorTx.addOutput(Coin.valueOf(totalAmount), anchorScriptServerP2SH);
+         }
+ 
+-        anchorTx = walletHelper.addInputs(anchorTx, channelStatus.amountServer, channelStatus.feePerByte);
++        anchorTx = walletHelper.addInputs(anchorTx, channelStatus.amountServer, channelStatus.getFeePerByte());
+ 
+         anchorTxHash = anchorTx.getHash();
+     }

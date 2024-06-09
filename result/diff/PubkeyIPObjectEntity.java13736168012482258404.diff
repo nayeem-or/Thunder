@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/PubkeyIPObjectEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/PubkeyIPObjectEntity.java
+@@ -23,7 +23,7 @@
+     public PubkeyIPObjectEntity () {}
+ 
+     public PubkeyIPObjectEntity (PubkeyIPObject pubkeyIPObject) {
+-        hostname = pubkeyIPObject.hostname;
++        hostname = pubkeyIPObject.getHostname();
+         port = pubkeyIPObject.port;
+         pubkey = pubkeyIPObject.pubkey;
+         signature = pubkeyIPObject.signature;
+@@ -32,7 +32,7 @@
+ 
+     public PubkeyIPObject toPubkeyIPObject() {
+         PubkeyIPObject pubkeyIPObject = new PubkeyIPObject();
+-        pubkeyIPObject.hostname = hostname;
++        pubkeyIPObject.setHostname(hostname);
+         pubkeyIPObject.port = port;
+         pubkeyIPObject.pubkey = pubkey;
+         pubkeyIPObject.signature = signature;

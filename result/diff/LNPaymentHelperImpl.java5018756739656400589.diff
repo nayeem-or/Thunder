@@ -1,0 +1,10 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
+@@ -120,6 +120,6 @@
+     }
+ 
+     private PeeledOnion getPeeledOnion (PaymentData paymentData) {
+-        return onionHelper.loadMessage(serverObject.pubKeyServer, paymentData.onionObject);
++        return onionHelper.loadMessage(serverObject.getPubKeyServer(), paymentData.onionObject);
+     }
+ }

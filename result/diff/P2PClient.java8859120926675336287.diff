@@ -1,0 +1,28 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/nio/P2PClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/nio/P2PClient.java
+@@ -62,7 +62,7 @@
+     private void connect (ClientObject node, ConnectionListener connectionListener) {
+         boolean successfulConnection = false;
+         try {
+-            System.out.println("Connect to " + node.host + ":" + node.port + " - " + node.intent);
++            System.out.println("Connect to " + node.getHost() + ":" + node.port + " - " + node.intent);
+             Channel ch = createChannel(node);
+             if (ch.isOpen()) {
+                 successfulConnection = true;
+@@ -70,7 +70,7 @@
+             }
+             ch.closeFuture().sync();
+ 
+-            System.out.println("Connection to " + node.host + " closed..");
++            System.out.println("Connection to " + node.getHost() + " closed..");
+         } catch (Exception e) {
+             if (!successfulConnection) {
+                 //Don't notify a previously successful connection again..
+@@ -85,6 +85,6 @@
+         Bootstrap b = new Bootstrap();
+         b.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000);
+         b.group(group).channel(NioSocketChannel.class).handler(new PipelineInitialiser(contextFactory, node));
+-        return b.connect(node.host, node.port).sync().channel();
++        return b.connect(node.getHost(), node.port).sync().channel();
+     }
+ }

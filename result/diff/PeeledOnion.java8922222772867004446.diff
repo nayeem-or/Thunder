@@ -1,0 +1,13 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/messages/PeeledOnion.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/messages/PeeledOnion.java
+@@ -30,5 +30,9 @@
+     public NodeKey nextHop;
+     public long amount;
+ 
+-    public OnionObject onionObject;
++    private OnionObject onionObject;
++
++	public OnionObject getOnionObject() {
++		return onionObject;
++	}
+ }

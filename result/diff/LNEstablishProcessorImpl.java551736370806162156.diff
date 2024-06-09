@@ -1,0 +1,58 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -288,13 +288,13 @@
+             Transaction channelTransaction = paymentLogic.getChannelTransaction(
+                     establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
+                     establishProgress.channel.channelStatus,
+-                    establishProgress.channel.keyClient,
++                    establishProgress.chgetKeyClient()Client,
+                     establishProgress.channel.keyServer
+             );
+ 
+             paymentLogic.checkSignatures(
+                     establishProgress.channel.keyServer,
+-                    establishProgress.channel.keyClient,
++                    establishProgress.chgetKeyClient()Client,
+                     establishProgress.channel.channelSignatures,
+                     channelTransaction,
+                     Collections.emptyList(),
+@@ -393,7 +393,7 @@
+                 establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
+                 establishProgress.channel.channelStatus.reverse(),
+                 establishProgress.channel.keyServer,
+-                establishProgress.channel.keyClient
++                establishProgress.chgetKeyClient()Client
+         );
+ 
+         establishProgress.channel.channelSignatures = paymentLogic.getSignatureObject(establishProgress.channel, channelTransaction, Collections.emptyList());
+@@ -422,7 +422,7 @@
+         channelObject.pubkeyA = serverObject.pubKeyServer.getPubKey();
+         channelObject.pubkeyB = node.nodeKey.getPubKey();
+         channelObject.pubkeyA1 = channel.keyServer.getPubKey();
+-        channelObject.pubkeyB1 = channel.keyClient.getPubKey();
++        channelObject.pubkeyB1 = chgetKeyClient()Client.getPubKey();
+         channelObject.timestamp = Tools.currentTime();
+         channelObject.txidAnchor = channel.anchorTxHash.getBytes();
+ 
