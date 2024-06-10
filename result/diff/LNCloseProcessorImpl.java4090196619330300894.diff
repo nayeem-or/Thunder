@@ -1,0 +1,31 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -113,8 +113,8 @@
+     }
+ 
+     private boolean checkFee (LNCloseAMessage message) {
+-        return message.feePerByte > serverObject.configuration.MIN_FEE_PER_BYTE_CLOSING &&
+-                message.feePerByte < serverObject.configuration.MAX_FEE_PER_BYTE_CLOSING;
++        return message.getFeePerByte() > serverObject.configuration.MIN_FEE_PER_BYTE_CLOSING &&
++                message.getFeePerByte() < serverObject.configuration.MAX_FEE_PER_BYTE_CLOSING;
+     }
+ 
+     private List<TransactionSignature> getTransactionSignatures (Transaction transaction) {
+@@ -204,7 +204,7 @@
+ 
+     private void processChannelClose (LNCloseAMessage message) {
+         checkClosingMessage(message);
+-        Transaction transaction = getClosingTransaction(channel.channelStatus, message.feePerByte);
++        Transaction transaction = getClosingTransaction(channel.channelStatus, message.getFeePerByte());
+         List<TransactionSignature> signatures = getTransactionSignatures(transaction);
+ 
+         isBlocked = true;
+@@ -249,7 +249,7 @@
+         //ChannelStatus statusSender = getChannelStatus(channel.channelUpdate.reverse()).reverse();
+         ChannelStatus status = channel.channelStatus;
+ 
+-        Transaction transaction = getClosingTransaction(status, message.feePerByte);
++        Transaction transaction = getClosingTransaction(status, message.getFeePerByte());
+ 
+         List<TransactionSignature> signatureList = message.getSignatureList();
+ 

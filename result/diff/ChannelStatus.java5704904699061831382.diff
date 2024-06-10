@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
+@@ -10,7 +10,7 @@
+ import java.util.List;
+ 
+ public class ChannelStatus {
+-    public long amountClient;
++    private long amountClient;
+     public long amountServer;
+ 
+     public List<PaymentData> paymentList = new ArrayList<>();
+@@ -189,4 +189,12 @@
+         s = s.substring(0, s.length() - 2);
+         return s;
+     }
++
++	public long getAmountClient() {
++		return amountClient;
++	}
++
++	public void setAmountClient(long amountClient) {
++		this.amountClient = amountClient;
++	}
+ }

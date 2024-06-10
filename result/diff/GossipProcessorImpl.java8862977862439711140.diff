@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipProcessorImpl.java
+@@ -111,7 +111,7 @@
+ 
+         //TODO: Hack to show the other hostname in debugs
+         if (firstMessage && sendMessage.pubkeyIPList.size() > 0) {
+-            node.port = sendMessage.pubkeyIPList.get(0).port;
++            node.port = sendMessage.pubkeyIPList.get(0).getPort();
+             node.host = sendMessage.pubkeyIPList.get(0).hostname;
+             firstMessage = false;
+         }
+@@ -133,7 +133,7 @@
+         }
+         PubkeyIPObject pubkeyIPObject = new PubkeyIPObject();
+         pubkeyIPObject.pubkey = serverObject.pubKeyServer.getPubKey();
+-        pubkeyIPObject.port = serverObject.portServer;
++        pubkeyIPObject.setPort(serverObject.portServer);
+         pubkeyIPObject.hostname = serverObject.hostServer;
+         pubkeyIPObject.timestamp = Tools.currentTime();
+         pubkeyIPObject.sign(serverObject.pubKeyServer);

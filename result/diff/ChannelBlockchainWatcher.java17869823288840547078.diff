@@ -1,0 +1,29 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/processor/implementations/management/ChannelBlockchainWatcher.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/processor/implementations/management/ChannelBlockchainWatcher.java
+@@ -37,7 +37,7 @@
+     @Override
+     public void start () {
+ 
+-        Transaction tx = blockchainHelper.getTransaction(channel.anchorTxHash);
++        Transaction tx = blockchainHelper.getTransaction(channel.getAnchorTxHash());
+         if (tx != null) {
+             int depth = tx.getConfidence().getDepthInBlocks();
+             if (depth > 0) {
+@@ -52,7 +52,7 @@
+                 if (stopped) {
+                     return true;
+                 } else {
+-                    return channel.anchorTxHash.equals(tx.getHash());
++                    return channel.getAnchorTxHash().equals(tx.getHash());
+                 }
+             }
+ 
+@@ -73,7 +73,7 @@
+                     return true;
+                 }
+                 for (TransactionInput input : tx.getInputs()) {
+-                    if (input.getOutpoint().getHash().equals(channel.anchorTxHash)) {
++                    if (input.getOutpoint().getHash().equals(channel.getAnchorTxHash())) {
+                         return true;
+                     }
+                 }

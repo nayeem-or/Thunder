@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
+@@ -25,7 +25,7 @@
+     public long amount;
+ 
+     public PaymentSecret secret;
+-    public int timestampOpen;
++    private int timestampOpen;
+     public int timestampRefund; //timestamp at which the other party will consider this payment refunded
+ 
+     public OnionObject onionObject;
+@@ -84,4 +84,12 @@
+             throw new RuntimeException(e);
+         }
+     }
++
++	public int getTimestampOpen() {
++		return timestampOpen;
++	}
++
++	public void setTimestampOpen(int timestampOpen) {
++		this.timestampOpen = timestampOpen;
++	}
+ }

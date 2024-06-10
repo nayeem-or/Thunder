@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
+@@ -28,7 +28,7 @@
+     public int timestampOpen;
+     public int timestampRefund; //timestamp at which the other party will consider this payment refunded
+ 
+-    public OnionObject onionObject;
++    private OnionObject onionObject;
+ 
+     @Override
+     public boolean equals (Object o) {
+@@ -84,4 +84,12 @@
+             throw new RuntimeException(e);
+         }
+     }
++
++	public OnionObject getOnionObject() {
++		return onionObject;
++	}
++
++	public void setOnionObject(OnionObject onionObject) {
++		this.onionObject = onionObject;
++	}
+ }

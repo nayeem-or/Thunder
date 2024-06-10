@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishAMessage.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishAMessage.java
+@@ -62,7 +62,7 @@
+             channel.keyClient = ECKey.fromPublicOnly(channelKeyServer);
+             channel.anchorTx = newAnchorTx;
+             channel.channelStatus.addressClient = new Address(Constants.getNetwork(), addressBytes);
+-            channel.channelStatus.revoHashClientCurrent = revocationHash;
++            channel.channelStatus.setRevoHashClientCurrent(revocationHash);
+             channel.channelStatus.revoHashClientNext = revocationHashNext;
+             channel.channelStatus.csvDelay = csvDelay;
+             channel.channelStatus.feePerByte = feePerByte;

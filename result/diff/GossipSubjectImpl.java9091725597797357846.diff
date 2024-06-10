@@ -1,0 +1,15 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
+@@ -32,7 +32,11 @@
+ 
+     @Override
+     public void removeObserver (NodeObserver observer) {
+-        synchronized (observerList) {
++        
++		/* ********OpenRefactory Warning********
++		 Synchronization should be on a private final field
++		*/
++		synchronized (observerList) {
+             observerList.remove(observer);
+             dataObjectMap.remove(observer);
+         }

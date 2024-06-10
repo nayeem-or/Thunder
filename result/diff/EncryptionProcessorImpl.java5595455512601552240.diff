@@ -1,0 +1,19 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
+@@ -153,14 +153,14 @@
+     }
+ 
+     private String getClientName () {
+-        if (node.host == null) {
++        if (node.getHost() == null) {
+             if (node.nodeKey != null) {
+                 return Tools.bytesToHex(node.nodeKey.getPubKey()).substring(0, 8);
+             } else {
+                 return null;
+             }
+         } else {
+-            return node.host;
++            return node.getHost();
+         }
+     }
+ 

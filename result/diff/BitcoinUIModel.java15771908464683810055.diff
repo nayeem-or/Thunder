@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/utils/BitcoinUIModel.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/utils/BitcoinUIModel.java
+@@ -148,7 +148,7 @@
+     public String getHostname (List<PubkeyIPObject> ipObjects, byte[] node) {
+         for (PubkeyIPObject ipObject : ipObjects) {
+             if (Arrays.equals(node, ipObject.pubkey)) {
+-                return ipObject.hostname;
++                return ipObject.getHostname();
+             }
+         }
+         return Tools.bytesToHex(node);

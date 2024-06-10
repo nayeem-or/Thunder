@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
+@@ -93,7 +93,7 @@
+         dbHandler.addPaymentSecret(paymentSecret);
+ 
+         paymentData.sending = true;
+-        paymentData.secret = paymentSecret;
++        paymentData.setSecret(paymentSecret);
+         paymentData.amount = 100;
+         paymentData.onionObject = onionObject;
+ 

@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
+@@ -200,7 +200,7 @@
+ 
+                 PubkeyIPObject randomNode = Tools.getRandomItemFromList(ipList);
+                 ClientObject client = ipObjectToNode(randomNode, GET_IPS);
+-                client.resultCallback = new NullResultCommand();
++                client.setResultCallback(new NullResultCommand());
+                 connect(client, new ConnectionListener());
+                 Thread.sleep(300);
+                 alreadyFetched.add(randomNode);

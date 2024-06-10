@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/MainController.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/MainController.java
+@@ -201,7 +201,7 @@
+         thunderBalance.textProperty().bind(EasyBind.map(model.balanceThunder, Coin::toFriendlyString));
+         blockchainBalance.textProperty().bind(EasyBind.map(model.balance, Coin::toFriendlyString));
+ 
+-        openChannel.textProperty().bind(model.openChannelButtonText);
++        openChannel.textProperty().bind(model.getOpenChannelButtonText());
+ 
+         thunderReceiveMoneyBtn.disableProperty().bind(model.sendReceiveButtonEnabled);
+         thunderSendMoneyOutBtn.disableProperty().bind(model.sendReceiveButtonEnabled);

@@ -1,0 +1,16 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/Configuration.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/Configuration.java
+@@ -7,6 +7,12 @@
+     public String publicKey;
+     public String serverKey;
+     public String hostnameServer;
+-    public int portServer;
++    private int portServer;
+     public Set<String> nodesToBuildChannelWith = new HashSet<>();
++	public int getPortServer() {
++		return portServer;
++	}
++	public void setPortServer(int portServer) {
++		this.portServer = portServer;
++	}
+ }

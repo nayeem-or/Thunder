@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -62,7 +62,7 @@
+      * For now we keep the force close timestamp. It is updated when the channel changed.
+      * It is easy to keep track when to force broadcast a channel to the blockchain this way.
+      */
+-    public int timestampOpen;
++    private int timestampOpen;
+     public int timestampForceClose;
+     /*
+      * We also want to save the actual transactions as soon as we see them on the network / create them.
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public int getTimestampOpen() {
++		return timestampOpen;
++	}
++
++	public void setTimestampOpen(int timestampOpen) {
++		this.timestampOpen = timestampOpen;
++	}
++
+     //endregion
+ }

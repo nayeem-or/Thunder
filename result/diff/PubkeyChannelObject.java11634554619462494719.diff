@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/PubkeyChannelObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/PubkeyChannelObject.java
+@@ -17,7 +17,7 @@
+     public byte[] signatureA;
+     public byte[] signatureB;
+ 
+-    public int timestamp;
++    private int timestamp;
+ 
+     public PubkeyChannelObject () {
+     }
+@@ -142,4 +142,8 @@
+         result = 31 * result + timestamp;
+         return result;
+     }
++
++	public void setTimestamp(int timestamp) {
++		this.timestamp = timestamp;
++	}
+ }

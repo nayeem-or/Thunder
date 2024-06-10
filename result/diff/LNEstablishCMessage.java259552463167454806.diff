@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishCMessage.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishCMessage.java
+@@ -14,7 +14,7 @@
+ 
+     @Override
+     public Channel saveToChannel (Channel channel) {
+-        channel.anchorTx = new Transaction(Constants.getNetwork(), anchorSigned);
++        channel.setAnchorTx(new Transaction(Constants.getNetwork(), anchorSigned));
+         return channel;
+     }
+ 

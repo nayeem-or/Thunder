@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
+@@ -310,7 +310,7 @@
+ 
+     private ClientObject ipObjectToNode (PubkeyIPObject ipObject, ConnectionIntent intent) {
+         ClientObject node = new ClientObject();
+-        node.isServer = false;
++        node.setIsServer(false);
+         node.intent = intent;
+         node.nodeKey = new NodeKey(ipObject.pubkey);
+         node.host = ipObject.hostname;

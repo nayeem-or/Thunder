@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/LNConfiguration.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/LNConfiguration.java
+@@ -7,7 +7,7 @@
+ 
+     public int MIN_FEE_PER_BYTE = 1;
+     public int DEFAULT_FEE_PER_BYTE = 5;
+-    public int MAX_FEE_PER_BYTE = 30;
++    private int MAX_FEE_PER_BYTE = 30;
+ 
+     public int MIN_REVOCATION_DELAY = 7 * 24 * 60 * 60;
+     public int DEFAULT_REVOCATION_DELAY = 2 * 7 * 24 * 60 * 60;
+@@ -30,4 +30,8 @@
+     public int getTimeToReduceWhenRelayingPayment () {
+         return Tools.getRandom(DEFAULT_REFUND_DELAY * DEFAULT_OVERLAY_REFUND, MAX_REFUND_DELAY * MAX_OVERLAY_REFUND);
+     }
++
++	public int getMAX_FEE_PER_BYTE() {
++		return MAX_FEE_PER_BYTE;
++	}
+ }

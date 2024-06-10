@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/PubkeyIPObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/PubkeyIPObject.java
+@@ -17,7 +17,7 @@
+     public int port;
+     public byte[] pubkey;
+     public byte[] signature;
+-    public int timestamp;
++    private int timestamp;
+ 
+     public PubkeyIPObject () {
+     }
+@@ -167,4 +167,8 @@
+                 ", timestamp=" + timestamp +
+                 '}';
+     }
++
++	public void setTimestamp(int timestamp) {
++		this.timestamp = timestamp;
++	}
+ }

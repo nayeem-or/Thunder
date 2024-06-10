@@ -1,0 +1,17 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/wallet/PaymentResponse.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/wallet/PaymentResponse.java
+@@ -14,7 +14,13 @@
+         this.notice = notice;
+     }
+ 
+-    @Override
++    
++	/* ********OpenRefactory Warning********
++	 The class 'PaymentResponse' only overrides 'equals' method.
++	 iCR suggests that both 'equals' and 'hashCode' should be overridden.
++	*/
++
++	@Override
+     public boolean equals (Object o) {
+         if (o == null) {
+             return false;

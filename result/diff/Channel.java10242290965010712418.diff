@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -63,7 +63,7 @@
+      * It is easy to keep track when to force broadcast a channel to the blockchain this way.
+      */
+     public int timestampOpen;
+-    public int timestampForceClose;
++    private int timestampForceClose;
+     /*
+      * We also want to save the actual transactions as soon as we see them on the network / create them.
+      * While this might not be completely necessary, it allows for efficient lookup in case anything goes wrong and we need it.
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public int getTimestampForceClose() {
++		return timestampForceClose;
++	}
++
++	public void setTimestampForceClose(int timestampForceClose) {
++		this.timestampForceClose = timestampForceClose;
++	}
++
+     //endregion
+ }

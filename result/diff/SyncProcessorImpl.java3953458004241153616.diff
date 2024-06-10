@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/sync/SyncProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/sync/SyncProcessorImpl.java
+@@ -76,7 +76,7 @@
+ 
+     private void processSyncGetMessage (Message message) {
+         SyncGetMessage syncMessage = (SyncGetMessage) message;
+-        sendSyncData(syncMessage.fragmentIndex);
++        sendSyncData(syncMessage.getFragmentIndex());
+     }
+ 
+     private void sendSyncData (int fragmentIndex) {
