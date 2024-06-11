@@ -2,8 +2,7 @@ name: Trigger iCR
 
 on:
   push:
-    # branches: [ '**' ]
-    branches: [ "master" ]
+    branches: [ '**' ]
     paths-ignore: [ "result/**" ]
 
 jobs:
@@ -12,18 +11,34 @@ jobs:
     steps:
     - uses: actions/checkout@v4  # Use the latest version
 
-    - name: Pull icr image
-      run: |
-        docker pull openrefactory/icr-java-engine:4.2.0
+    # - name: Pull icr image
+    #   run: |
+    #    docker pull openrefactory/icr-java-engine:4.2.0
 
-    - name: Run static analysis tool with environment variable
-      run: |
-        docker run --rm \
-            --env LICENSE_KEY=H8LW-V566-APNJ-TFOR \
-            --mount type=bind,source=${{ github.workspace }},target=/workspace/source \
-            --mount type=bind,source=${{ github.workspace }}/result,target=/workspace/result \
-            openrefactory/icr-java-engine:4.2.0
+    # - name: Run static analysis tool with environment variable
+    #   run: |
+    #     docker run --rm \
+    #        --env LICENSE_KEY=H8LW-V566-APNJ-TFOR \
+    #        --mount type=bind,source=${{ github.workspace }},target=/workspace/source \
+    #        --mount type=bind,source=${{ github.workspace }}/result,target=/workspace/result \
+    #        openrefactory/icr-java-engine:4.2.0
+          
+    #   - name: Download script binary
+    #   run: |
+    #     # Replace the URL below with the actual URL of the binary in the public release
+    #     curl -L -o script_bin https://github.com/username/repository/releases/download/v1.0.0/script_bin
+    #     chmod +x script_bin
+    #   shell: bash
 
+    # - name: Run script binary
+    #   run: |
+    #     ./script_bin
+    #   shell: bash
+      
+    - name: Run icr engine
+      run: |
+       ${{ github.workspace }}/script/icr-cli -source ${{ github.workspace }} -result ${{ github.workspace }}/result -language java -license H8LW-V566-APNJ-TFOR
+      shell: bash
     - name: Commit and push changes
       uses: stefanzweifel/git-auto-commit-action@v5
       with:

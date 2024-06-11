@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/SeedNodes.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/SeedNodes.java
+@@ -27,7 +27,7 @@
+         seed1.hostname = hostname;
+         seed1.pubkey = Tools.hexStringToByteArray(pubkey);
+         seed1.signature = new byte[1];
+-        seed1.port = port;
++        seed1.setPort(port);
+         return seed1;
+     }
+ 
+@@ -47,7 +47,7 @@
+ 
+         PubkeyIPObject seed1 = new PubkeyIPObject();
+         seed1.hostname = "localhost";
+-        seed1.port = Constants.STANDARD_PORT;
++        seed1.setPort(Constants.STANDARD_PORT);
+         seed1.pubkey = node.nodeKey.getPubKey();
+ 
+         ipList.clear();

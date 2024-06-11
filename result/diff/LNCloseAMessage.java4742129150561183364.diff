@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/messages/LNCloseAMessage.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/messages/LNCloseAMessage.java
+@@ -11,7 +11,7 @@
+ public class LNCloseAMessage implements LNClose {
+     public byte[] channelHash;
+     public List<byte[]> signatureList;
+-    public float feePerByte;
++    private float feePerByte;
+ 
+     public LNCloseAMessage (Sha256Hash channelHash, Collection<TransactionSignature> signatureList, float feePerByte) {
+         this.channelHash = channelHash.getBytes();
+@@ -28,4 +28,8 @@
+         Preconditions.checkNotNull(signatureList);
+         Preconditions.checkArgument(signatureList.size() > 0);
+     }
++
++	public float getFeePerByte() {
++		return feePerByte;
++	}
+ }

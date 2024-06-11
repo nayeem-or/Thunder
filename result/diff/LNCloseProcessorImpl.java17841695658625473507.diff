@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -226,7 +226,7 @@
+         Script inputScript = ScriptTools.getCommitInputScript(
+                 message.getSignatureList().get(0).encodeToBitcoin(),
+                 signatures.get(0).encodeToBitcoin(),
+-                channel.keyClient,
++                channel.getKeyClient(),
+                 channel.keyServer);
+ 
+         transaction.getInput(0).setScriptSig(inputScript);
+@@ -256,7 +256,7 @@
+         int i = 0;
+         for (TransactionSignature signature : signatureList) {
+ 
+-            boolean correct = Tools.checkSignature(transaction, i, ScriptTools.getAnchorOutputScript(channel.keyClient, channel.keyServer), channel.keyClient,
++            boolean correct = Tools.checkSignature(transaction, i, ScriptTools.getAnchorOutputScript(channel.getKeyClient(), channel.keyServer), channel.getKeyClient(),
+                     signature);
+             if (!correct) {
+                 throw new LNCloseException("Signature is not correct..");

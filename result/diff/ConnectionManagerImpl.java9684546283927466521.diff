@@ -1,0 +1,29 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
+@@ -192,7 +192,7 @@
+         do {
+             try {
+                 ipList = PubkeyIPObject.removeFromListByPubkey(ipList, alreadyFetched);
+-                ipList = PubkeyIPObject.removeFromListByPubkey(ipList, node.pubKeyServer.getPubKey());
++                ipList = PubkeyIPObject.removeFromListByPubkey(ipList, node.getPubKeyServer().getPubKey());
+ 
+                 if (ipList.size() == 0) {
+                     break;
+@@ -230,7 +230,7 @@
+ 
+                 ipList = dbHandler.getIPObjects();
+ 
+-                ipList = PubkeyIPObject.removeFromListByPubkey(ipList, node.pubKeyServer.getPubKey());
++                ipList = PubkeyIPObject.removeFromListByPubkey(ipList, node.getPubKeyServer().getPubKey());
+                 ipList = PubkeyIPObject.removeFromListByPubkey(ipList, alreadyConnected);
+                 ipList = PubkeyIPObject.removeFromListByPubkey(ipList, alreadyTried);
+ 
+@@ -277,7 +277,7 @@
+         while (totalSyncs < amountOfNodesToSyncFrom) {
+             synchronizationHelper.resync(new SyncListener());
+             ipList = PubkeyIPObject.removeFromListByPubkey(ipList, alreadyFetched);
+-            ipList = PubkeyIPObject.removeFromListByPubkey(ipList, node.pubKeyServer.getPubKey());
++            ipList = PubkeyIPObject.removeFromListByPubkey(ipList, node.getPubKeyServer().getPubKey());
+ 
+             if (ipList.size() == 0) {
+                 callback.execute(new NoSyncResult());

@@ -1,0 +1,29 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
+@@ -64,7 +64,7 @@
+         ServerObject server = new ServerObject();
+         server.portServer = configuration.portServer;
+         server.hostServer = configuration.hostnameServer;
+-        server.pubKeyServer = ECKey.fromPrivate(Tools.hexStringToByteArray(configuration.serverKey));
++        server.setPubKeyServer(ECKey.fromPrivate(Tools.hexStringToByteArray(configuration.serverKey)));
+ 
+         //Currently we are only using an in-memory implementation of the DBHandler and a Wallet that is not holding real bitcoin
+         DBHandler dbHandler = new HibernateHandler();
+@@ -184,7 +184,7 @@
+ 
+     static List<String> showIntroductionAndGetNodeList (ServerObject server, DBHandler dbHandler) {
+         System.out.println("Thunder.Wallet NodeKey");
+-        System.out.println("Your public key is:     " + server.pubKeyServer.getPublicKeyAsHex());
++        System.out.println("Your public key is:     " + server.getPubKeyServer().getPublicKeyAsHex());
+         System.out.println();
+         System.out.println("Nodes currently online: ");
+ 
+@@ -204,7 +204,7 @@
+                 return null;
+             } else if (s.equals("")) {
+                 return nodeList;
+-            } else if (s.equals(server.pubKeyServer.getPublicKeyAsHex())) {
++            } else if (s.equals(server.getPubKeyServer().getPublicKeyAsHex())) {
+                 System.out.println("You cannot connect to yourself..");
+             } else if (nodeList.contains(s)) {
+                 System.out.println("Pubkey already added to the list..");

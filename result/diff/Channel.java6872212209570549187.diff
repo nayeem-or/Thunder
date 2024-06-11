@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -43,7 +43,7 @@
+      * Pubkeys for the anchor transactions
+      * The 'A' ones will receive payments in case we want to exit the anchor prematurely.
+      */
+-    public ECKey keyClient;
++    private ECKey keyClient;
+     public ECKey keyServer;
+     /*
+      * Revocation 'master hashes' for creating new revocation hashes for new payments.
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public ECKey getKeyClient() {
++		return keyClient;
++	}
++
++	public void setKeyClient(ECKey keyClient) {
++		this.keyClient = keyClient;
++	}
++
+     //endregion
+ }

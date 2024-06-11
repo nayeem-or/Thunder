@@ -1,0 +1,15 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
+@@ -575,7 +575,11 @@
+ 
+     @Override
+     public List<PaymentData> lockPaymentsToBeMade (NodeKey nodeKey) {
+-        synchronized (payments) {
++        
++		/* ********OpenRefactory Warning********
++		 Synchronization should be on a private final field
++		*/
++		synchronized (payments) {
+             return getPaymentDatas(nodeKey, payments, false, TO_BE_EMBEDDED, CURRENTLY_EMBEDDING);
+         }
+     }

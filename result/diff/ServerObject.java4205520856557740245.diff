@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
+@@ -3,7 +3,7 @@
+ import org.bitcoinj.core.ECKey;
+ 
+ public class ServerObject {
+-    public ECKey pubKeyServer;
++    private ECKey pubKeyServer;
+ 
+     public String hostServer;
+     public int portServer;
+@@ -55,4 +55,12 @@
+     public interface OnConnectionCloseListener {
+         void onClose ();
+     }
++
++	public ECKey getPubKeyServer() {
++		return pubKeyServer;
++	}
++
++	public void setPubKeyServer(ECKey pubKeyServer) {
++		this.pubKeyServer = pubKeyServer;
++	}
+ }

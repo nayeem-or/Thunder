@@ -1,0 +1,23 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -54,9 +54,9 @@
+             Coin value = Coin.valueOf(payment.amount);
+             Script script;
+             if (payment.sending) {
+-                script = ScriptTools.getChannelTxOutputPaymentSending(keyServer, keyClient, revocationHash, payment.secret, payment.timestampRefund);
++                script = ScriptTools.getChannelTxOutputPaymentSending(keyServer, keyClient, revocationHash, payment.secret, payment.getTimestampRefund());
+             } else {
+-                script = ScriptTools.getChannelTxOutputPaymentReceiving(keyServer, keyClient, revocationHash, payment.secret, payment.timestampRefund);
++                script = ScriptTools.getChannelTxOutputPaymentReceiving(keyServer, keyClient, revocationHash, payment.secret, payment.getTimestampRefund());
+             }
+             transaction.addOutput(value, script);
+         }
+@@ -128,7 +128,7 @@
+             if (diff > configuration.MAX_DIFF_TIMESTAMPS) {
+                 throw new LNPaymentException("timestampOpen is too far off. Calibrate your system clock. Diff: " + diff);
+             }
+-            diff = payment.timestampRefund - payment.timestampOpen;
++            diff = payment.getTimestampRefund() - payment.timestampOpen;
+             if (diff > configuration.MAX_OVERLAY_REFUND * configuration.MAX_REFUND_DELAY * OnionObject.MAX_HOPS) {
+                 throw new LNPaymentException("Refund timeout is too large. Is: " + diff);
+             }

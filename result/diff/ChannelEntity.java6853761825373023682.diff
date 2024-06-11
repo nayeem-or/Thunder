@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -297,8 +297,8 @@
+         channelStatus.csvDelay = csvDelay;
+         channelStatus.revoHashClientCurrent = revoHashClientCurrent == null ? null
+                 : revoHashClientCurrent.toRevocationHash();
+-        channelStatus.revoHashServerCurrent = revoHashServerCurrent == null ? null
+-                : revoHashServerCurrent.toRevocationHash();
++        channelStatus.setRevoHashServerCurrent(revoHashServerCurrent == null ? null
++                : revoHashServerCurrent.toRevocationHash());
+         channelStatus.revoHashClientNext = revoHashClientNext == null ? null
+                 : revoHashClientNext.toRevocationHash();
+         channelStatus.revoHashServerNext = revoHashServerNext == null ? null
+@@ -316,8 +316,8 @@
+         if (channelStatus.revoHashClientCurrent != null) {
+             revoHashClientCurrent = new RevocationHashEmbedded(channelStatus.revoHashClientCurrent);
+         }
+-        if (channelStatus.revoHashServerCurrent != null) {
+-            revoHashServerCurrent = new RevocationHashEmbedded(channelStatus.revoHashServerCurrent);
++        if (channelStatus.getRevoHashServerCurrent() != null) {
++            revoHashServerCurrent = new RevocationHashEmbedded(channelStatus.getRevoHashServerCurrent());
+         }
+         if (channelStatus.revoHashClientNext != null) {
+             revoHashClientNext = new RevocationHashEmbedded(channelStatus.revoHashClientNext);

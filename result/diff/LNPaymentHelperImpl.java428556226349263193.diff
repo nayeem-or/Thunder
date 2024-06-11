@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
+@@ -38,7 +38,7 @@
+ 
+             @Override
+             public void onPaymentCompleted (PaymentData payment) {
+-                NodeKey senderOfPayment = dbHandler.getSenderOfPayment(payment.secret);
++                NodeKey senderOfPayment = dbHandler.getSenderOfPayment(payment.getSecret());
+                 if (senderOfPayment != null) {
+                     pingProcessor(senderOfPayment);
+                 }
+@@ -46,7 +46,7 @@
+ 
+             @Override
+             public void onPaymentRefunded (PaymentData payment) {
+-                NodeKey senderOfPayment = dbHandler.getSenderOfPayment(payment.secret);
++                NodeKey senderOfPayment = dbHandler.getSenderOfPayment(payment.getSecret());
+                 if (senderOfPayment != null) {
+                     pingProcessor(senderOfPayment);
+                 } else {

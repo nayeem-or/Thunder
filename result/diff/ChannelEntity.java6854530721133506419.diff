@@ -1,0 +1,30 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -89,7 +89,7 @@
+         channel.anchorTx = anchorTx;
+         channel.minConfirmationAnchor = minConfirmationAnchor;
+         channel.channelStatus = toChannelStatus();
+-        channel.channelSignatures = localChannelSignatures;
++        channel.setChannelSignatures(localChannelSignatures);
+         channel.phase = phase;
+         channel.closingSignatures = closingSignatures;
+         return channel;
+@@ -127,14 +127,14 @@
+             });
+         }
+ 
+-        if (channel.channelSignatures != null) {
+-            if (channel.channelSignatures.paymentSignatures != null) {
+-                channel.channelSignatures.paymentSignatures.forEach(signature -> {
++        if (channel.getChannelSignatures() != null) {
++            if (channel.getChannelSignatures().paymentSignatures != null) {
++                channel.getChannelSignatures().paymentSignatures.forEach(signature -> {
+                     HibernateSignature paymentSignature = new HibernateSignature(signature, HibernateSignature.Type.CLOSING);
+                     addSignature(paymentSignature);
+                 });
+             }
+-            if (channel.channelSignatures.channelSignatures != null) {
++            if (channel.getChannelSignatures().channelSignatures != null) {
+                 channel.channelSignatures.channelSignatures.forEach(signature -> {
+                     HibernateSignature channelSignature = new HibernateSignature(signature, HibernateSignature.Type.CLOSING);
+                     addSignature(channelSignature);

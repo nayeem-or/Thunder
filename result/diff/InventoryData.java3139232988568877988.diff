@@ -1,0 +1,17 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/InventoryData.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/InventoryData.java
+@@ -32,7 +32,13 @@
+                 .getAsString(), i.get("nconnected").getAsInt(), i.get("relayed_count").getAsInt(), i.get("relayed_percent").getAsInt());
+     }
+ 
+-    @Override
++    
++	/* ********OpenRefactory Warning********
++	 The class 'InventoryData' only overrides 'equals' method.
++	 iCR suggests that both 'equals' and 'hashCode' should be overridden.
++	*/
++
++	@Override
+     public boolean equals (Object o) {
+         if (o == null) {
+             return false;

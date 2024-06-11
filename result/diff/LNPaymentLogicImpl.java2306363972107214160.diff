@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -137,7 +137,7 @@
+                 throw new LNPaymentException("Refund timeout is too short. Is: " + diff);
+             }
+         }
+-        if (newStatus.csvDelay < configuration.MIN_REVOCATION_DELAY || newStatus.csvDelay > configuration.MAX_REVOCATION_DELAY) {
++        if (newStatus.csvDelay < configuration.getMIN_REVOCATION_DELAY() || newStatus.csvDelay > configuration.MAX_REVOCATION_DELAY) {
+             throw new LNPaymentException("Revocation delay not within allowed boundaries. Is: " + newStatus.csvDelay);
+         }
+         if (newStatus.feePerByte > configuration.MAX_FEE_PER_BYTE || newStatus.feePerByte < configuration.MIN_FEE_PER_BYTE) {

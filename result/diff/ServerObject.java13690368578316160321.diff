@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
+@@ -8,7 +8,7 @@
+     public String hostServer;
+     public int portServer;
+ 
+-    public LNConfiguration configuration = new LNConfiguration();
++    private LNConfiguration configuration = new LNConfiguration();
+ 
+     public ServerObject (ServerObject node) {
+         init();
+@@ -55,4 +55,8 @@
+     public interface OnConnectionCloseListener {
+         void onClose ();
+     }
++
++	public LNConfiguration getConfiguration() {
++		return configuration;
++	}
+ }

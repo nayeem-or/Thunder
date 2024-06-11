@@ -1,0 +1,67 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -286,7 +286,7 @@
+             message.saveToChannel(establishProgress.channel);
+ 
+             Transaction channelTransaction = paymentLogic.getChannelTransaction(
+-                    establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
++                    establishProgress.chgetAnchorTx()chorTx.getOutput(0).getOutPointFor(),
+                     establishProgress.channel.channelStatus,
+                     establishProgress.channel.keyClient,
+                     establishProgress.channel.keyServer
+@@ -342,10 +342,10 @@
+     }
+ 
+     private void onChannelEstablished () {
+-        establishProgress.channel.anchorTxHash = establishProgress.channel.anchorTx.getHash();
++        establishProgress.channel.anchorTxHash = establishProgress.chgetAnchorTx()chorTx.getHash();
+         establishProgress.channel.phase = ESTABLISH_WAITING_FOR_BLOCKCHAIN_CONFIRMATION;
+         dbHandler.insertChannel(establishProgress.channel);
+-        blockchainHelper.broadcastTransaction(establishProgress.channel.anchorTx);
++        blockchainHelper.broadcastTransaction(establishProgress.chgetAnchorTx()chorTx);
+ 
+ //        channelManager.onExchangeDone(channel, this::onEnoughConfirmations);
+         this.onEnoughConfirmations();
+@@ -390,7 +390,7 @@
+     private void sendEstablishMessageB () {
+ 
+         Transaction channelTransaction = paymentLogic.getChannelTransaction(
+-                establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
++                establishProgress.chgetAnchorTx()chorTx.getOutput(0).getOutPointFor(),
+                 establishProgress.channel.channelStatus.reverse(),
+                 establishProgress.channel.keyServer,
+                 establishProgress.channel.keyClient
+@@ -404,9 +404,9 @@
+     }
+ 
+     private void sendEstablishMessageC () {
+-        Transaction anchorTx = establishProgress.channel.anchorTx;
++        Transaction anchorTx = establishProgress.chgetAnchorTx()chorTx;
+         anchorTx = walletHelper.signTransaction(anchorTx);
+-        establishProgress.channel.anchorTx = anchorTx;
++  establishProgress.channel.setAnchorTx(rTx = an)chorTx;
+ 
+         LNEstablish message = messageFactory.getEstablishMessageC(anchorTx);
+         establishProgress.messages.add(message);

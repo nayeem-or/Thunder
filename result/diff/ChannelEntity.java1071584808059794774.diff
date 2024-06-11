@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -84,7 +84,7 @@
+         channel.masterPrivateKeyServer = masterPrivateKeyServer;
+         channel.shaChainDepthCurrent = shaChainDepthCurrent;
+         channel.timestampOpen = timestampOpen;
+-        channel.timestampForceClose = timestampForceClose;
++        channel.setTimestampForceClose(timestampForceClose);
+         channel.anchorTxHash = anchorTxHash;
+         channel.anchorTx = anchorTx;
+         channel.minConfirmationAnchor = minConfirmationAnchor;
+@@ -108,7 +108,7 @@
+         masterPrivateKeyServer = channel.masterPrivateKeyServer;
+         shaChainDepthCurrent = channel.shaChainDepthCurrent;
+         timestampOpen = channel.timestampOpen;
+-        timestampForceClose = channel.timestampForceClose;
++        timestampForceClose = channel.getTimestampForceClose();
+         anchorTx = channel.anchorTx;
+         anchorTxHash = channel.anchorTxHash;
+         minConfirmationAnchor = channel.minConfirmationAnchor;

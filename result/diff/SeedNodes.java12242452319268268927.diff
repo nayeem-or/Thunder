@@ -1,0 +1,18 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/SeedNodes.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/SeedNodes.java
+@@ -48,7 +48,14 @@
+         PubkeyIPObject seed1 = new PubkeyIPObject();
+         seed1.hostname = "localhost";
+         seed1.port = Constants.STANDARD_PORT;
+-        seed1.pubkey = node.nodeKey.getPubKey();
++        /* ********OpenRefactory Warning********
++		 Possible null pointer dereference!
++		 Path: 
++			File: SeedNodes.java, Line: 51
++				seed1.pubkey=node.nodeKey.getPubKey();
++				nodeKey is referenced in method invocation.
++		*/
++		seed1.pubkey = node.nodeKey.getPubKey();
+ 
+         ipList.clear();
+ 

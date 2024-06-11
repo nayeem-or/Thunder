@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -37,7 +37,7 @@
+ public class Channel {
+ 
+     public int id;
+-    public NodeKey nodeKeyClient;
++    private NodeKey nodeKeyClient;
+     private Sha256Hash hash;
+     /*
+      * Pubkeys for the anchor transactions
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public NodeKey getNodeKeyClient() {
++		return nodeKeyClient;
++	}
++
++	public void setNodeKeyClient(NodeKey nodeKeyClient) {
++		this.nodeKeyClient = nodeKeyClient;
++	}
++
+     //endregion
+ }

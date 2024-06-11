@@ -1,0 +1,14 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
+@@ -170,7 +170,10 @@
+                 continue;
+             }
+ 
+-            synchronized (totalList) {
++            /* ********OpenRefactory Warning********
++			 Synchronization should be on a private final field
++			*/
++			synchronized (totalList) {
+                 Session session = sessionFactory.openSession();
+                 Transaction tx = session.beginTransaction();
+                 Iterator<P2PDataObject> iterator2 = totalList.iterator();
