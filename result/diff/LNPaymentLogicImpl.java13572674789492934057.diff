@@ -1,0 +1,51 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -181,14 +181,14 @@
+             return this.getChannelTransaction(
+                     new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
+                     channel.channelStatus,
+-                    channel.keyClient,
++                    channel.getKeyClient(),
+                     channel.keyServer);
+         } else {
+             return this.getChannelTransaction(
+                     new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
+                     channel.channelStatus.reverse(),
+                     channel.keyServer,
+-                    channel.keyClient);
++                    channel.getKeyClient());
+         }
+     }
+ 
+@@ -207,12 +207,12 @@
+                     channelTx.getHash(),
+                     channel.channelStatus,
+                     channel.keyServer,
+-                    channel.keyClient);
++                    channel.getKeyClient());
+         } else {
+             return this.getPaymentTransactions(
+                     channelTx.getHash(),
+                     channel.channelStatus.reverse(),
+-                    channel.keyClient,
++                    channel.getKeyClient(),
+                     channel.keyServer);
+         }
+     }
+@@ -225,14 +225,14 @@
+         if (side == SERVER) {
+             this.checkSignatures(
+                     channel.keyServer,
+-                    channel.keyClient,
++                    channel.getKeyClient(),
+                     channelSignatures,
+                     channelTx,
+                     paymentTx,
+                     channel.channelStatus);
+         } else {
+             this.checkSignatures(
+-                    channel.keyClient,
++                    channel.getKeyClient(),
+                     channel.keyServer,
+                     channelSignatures,
+                     channelTx,

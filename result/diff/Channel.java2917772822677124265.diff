@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -69,7 +69,7 @@
+      * While this might not be completely necessary, it allows for efficient lookup in case anything goes wrong and we need it.
+      */
+     public Sha256Hash anchorTxHash;
+-    public Transaction anchorTx;
++    private Transaction anchorTx;
+     public int minConfirmationAnchor;
+ 
+     public ChannelStatus channelStatus;
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public Transaction getAnchorTx() {
++		return anchorTx;
++	}
++
++	public void setAnchorTx(Transaction anchorTx) {
++		this.anchorTx = anchorTx;
++	}
++
+     //endregion
+ }

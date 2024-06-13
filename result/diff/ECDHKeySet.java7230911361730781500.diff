@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/crypto/ECDHKeySet.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/crypto/ECDHKeySet.java
+@@ -12,7 +12,7 @@
+     public byte[] ivClient;
+     public byte[] ivServer;
+ 
+-    public long counterIn;
++    private long counterIn;
+     public long counterOut;
+ 
+     public ECDHKeySet (byte[] masterKey, byte[] serverPubkey, byte[] clientPubkey) throws NoSuchProviderException, NoSuchAlgorithmException {
+@@ -62,4 +62,8 @@
+         }
+     }
+ 
++	public long getCounterIn() {
++		return counterIn;
++	}
++
+ }

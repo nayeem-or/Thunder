@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -301,8 +301,8 @@
+                 : revoHashServerCurrent.toRevocationHash();
+         channelStatus.revoHashClientNext = revoHashClientNext == null ? null
+                 : revoHashClientNext.toRevocationHash();
+-        channelStatus.revoHashServerNext = revoHashServerNext == null ? null
+-                : revoHashServerNext.toRevocationHash();
++        channelStatus.setRevoHashServerNext(revoHashServerNext == null ? null
++                : revoHashServerNext.toRevocationHash());
+         channelStatus.addressClient = addressClient;
+         channelStatus.addressServer = addressServer;
+         return channelStatus;
+@@ -322,8 +322,8 @@
+         if (channelStatus.revoHashClientNext != null) {
+             revoHashClientNext = new RevocationHashEmbedded(channelStatus.revoHashClientNext);
+         }
+-        if (channelStatus.revoHashServerNext != null) {
+-            revoHashServerNext = new RevocationHashEmbedded(channelStatus.revoHashServerNext);
++        if (channelStatus.getRevoHashServerNext() != null) {
++            revoHashServerNext = new RevocationHashEmbedded(channelStatus.getRevoHashServerNext());
+         }
+         addressClient = channelStatus.addressClient;
+         addressServer = channelStatus.addressServer;

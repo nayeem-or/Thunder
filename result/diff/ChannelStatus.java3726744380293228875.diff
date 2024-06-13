@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
+@@ -32,7 +32,7 @@
+     transient public RevocationHash revoHashClientNextNext;
+     transient public RevocationHash revoHashServerNextNext;
+ 
+-    public Address addressClient;
++    private Address addressClient;
+     public Address addressServer;
+ 
+     public ChannelStatus copy () {
+@@ -189,4 +189,12 @@
+         s = s.substring(0, s.length() - 2);
+         return s;
+     }
++
++	public Address getAddressClient() {
++		return addressClient;
++	}
++
++	public void setAddressClient(Address addressClient) {
++		this.addressClient = addressClient;
++	}
+ }

@@ -1,0 +1,23 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -54,9 +54,9 @@
+             Coin value = Coin.valueOf(payment.amount);
+             Script script;
+             if (payment.sending) {
+-                script = ScriptTools.getChannelTxOutputPaymentSending(keyServer, keyClient, revocationHash, payment.secret, payment.timestampRefund);
++                script = ScriptTools.getChannelTxOutputPaymentSending(keyServer, keyClient, revocationHash, payment.getSecret(), payment.timestampRefund);
+             } else {
+-                script = ScriptTools.getChannelTxOutputPaymentReceiving(keyServer, keyClient, revocationHash, payment.secret, payment.timestampRefund);
++                script = ScriptTools.getChannelTxOutputPaymentReceiving(keyServer, keyClient, revocationHash, payment.getSecret(), payment.timestampRefund);
+             }
+             transaction.addOutput(value, script);
+         }
+@@ -269,7 +269,7 @@
+             if (!paymentData.sending) {
+                 throw new LNPaymentException("Trying to redeem a sent payment?");
+             }
+-            if (!paymentData.secret.verify()) {
++            if (!paymentData.getSecret().verify()) {
+                 throw new LNPaymentException("Trying to redeem but failed to verify secret.");
+             }
+         }

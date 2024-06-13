@@ -1,0 +1,51 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -287,7 +287,7 @@
+ 
+             Transaction channelTransaction = paymentLogic.getChannelTransaction(
+                     establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
+-                    establishProgress.channel.channelStatus,
++                    establishProgress.chgetChannelStatus()Status,
+                     establishProgress.channel.keyClient,
+                     establishProgress.channel.keyServer
+             );
+@@ -298,7 +298,7 @@
+                     establishProgress.channel.channelSignatures,
+                     channelTransaction,
+                     Collections.emptyList(),
+-                    establishProgress.channel.channelStatus
++                    establishProgress.chgetChannelStatus()Status
+ 
+             );
+ 
+@@ -391,7 +391,7 @@
+ 
+         Transaction channelTransaction = paymentLogic.getChannelTransaction(
+                 establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
+-                establishProgress.channel.channelStatus.reverse(),
++                establishProgress.chgetChannelStatus()Status.reverse(),
+                 establishProgress.channel.keyServer,
+                 establishProgress.channel.keyClient
+         );

@@ -1,0 +1,32 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
+@@ -85,23 +85,23 @@
+     public void applyUpdate (ChannelUpdate update) {
+         for (PaymentData refund : update.refundedPayments) {
+             if (refund.sending) {
+-                amountServer += refund.amount;
++                amountServer += refund.getAmount();
+             } else {
+-                amountClient += refund.amount;
++                amountClient += refund.getAmount();
+             }
+         }
+         for (PaymentData redeem : update.redeemedPayments) {
+             if (redeem.sending) {
+-                amountClient += redeem.amount;
++                amountClient += redeem.getAmount();
+             } else {
+-                amountServer += redeem.amount;
++                amountServer += redeem.getAmount();
+             }
+         }
+         for (PaymentData payment : update.newPayments) {
+             if (payment.sending) {
+-                amountServer -= payment.amount;
++                amountServer -= payment.getAmount();
+             } else {
+-                amountClient -= payment.amount;
++                amountClient -= payment.getAmount();
+             }
+         }
+ 

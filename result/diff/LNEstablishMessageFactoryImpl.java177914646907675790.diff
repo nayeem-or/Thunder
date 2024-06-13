@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishMessageFactoryImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishMessageFactoryImpl.java
+@@ -12,14 +12,14 @@
+         LNEstablishAMessage message = new LNEstablishAMessage(
+                 channel.keyServer,
+                 channel.anchorTx,
+-                channel.channelStatus.revoHashServerCurrent,
+-                channel.channelStatus.revoHashServerNext,
+-                channel.channelStatus.amountClient,
+-                channel.channelStatus.amountServer,
++                channel.getChannelStatus().revoHashServerCurrent,
++                channel.getChannelStatus().revoHashServerNext,
++                channel.getChannelStatus().amountClient,
++                channel.getChannelStatus().amountServer,
+                 0,  //TODO add some reasonable minConfirmations
+-                channel.channelStatus.addressServer,
+-                channel.channelStatus.feePerByte,
+-                channel.channelStatus.csvDelay);
++                channel.getChannelStatus().addressServer,
++                channel.getChannelStatus().feePerByte,
++                channel.getChannelStatus().csvDelay);
+         return message;
+     }
+ 

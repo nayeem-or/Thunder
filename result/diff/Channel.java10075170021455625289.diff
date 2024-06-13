@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -68,7 +68,7 @@
+      * We also want to save the actual transactions as soon as we see them on the network / create them.
+      * While this might not be completely necessary, it allows for efficient lookup in case anything goes wrong and we need it.
+      */
+-    public Sha256Hash anchorTxHash;
++    private Sha256Hash anchorTxHash;
+     public Transaction anchorTx;
+     public int minConfirmationAnchor;
+ 
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public Sha256Hash getAnchorTxHash() {
++		return anchorTxHash;
++	}
++
++	public void setAnchorTxHash(Sha256Hash anchorTxHash) {
++		this.anchorTxHash = anchorTxHash;
++	}
++
+     //endregion
+ }

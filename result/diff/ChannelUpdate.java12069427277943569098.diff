@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/messages/ChannelUpdate.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/messages/ChannelUpdate.java
+@@ -11,7 +11,7 @@
+     public List<PaymentData> refundedPayments = new ArrayList<>();
+     public List<PaymentData> redeemedPayments = new ArrayList<>();
+ 
+-    public int feePerByte;
++    private int feePerByte;
+     public int csvDelay;
+ 
+     public void applyConfiguration (LNConfiguration configuration) {
+@@ -81,4 +81,8 @@
+                 ", csvDelay=" + csvDelay +
+                 '}';
+     }
++
++	public int getFeePerByte() {
++		return feePerByte;
++	}
+ }

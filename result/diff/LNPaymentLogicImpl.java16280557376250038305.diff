@@ -1,0 +1,18 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -179,13 +179,13 @@
+     public Transaction getChannelTransaction (Channel channel, SIDE side) {
+         if (side == SERVER) {
+             return this.getChannelTransaction(
+-                    new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
++                    new TransactionOutPoint(Constants.getNetwork(), 0, channel.getAnchorTxHash()),
+                     channel.channelStatus,
+                     channel.keyClient,
+                     channel.keyServer);
+         } else {
+             return this.getChannelTransaction(
+-                    new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
++                    new TransactionOutPoint(Constants.getNetwork(), 0, channel.getAnchorTxHash()),
+                     channel.channelStatus.reverse(),
+                     channel.keyServer,
+                     channel.keyClient);

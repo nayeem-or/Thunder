@@ -1,0 +1,33 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -263,7 +263,7 @@
+         if (testProgressReceivingMessageAmount(0)) {
+             //TODO test for validity of establish settings
+             //TODO test if inputs are paying adequate fees and are paying from SegWit outputs
+-            this.establishProgress.channel.nodeKeyClient = node.nodeKey;
++            this.establishProgress.c.setNodeKeyClient(ent = node.n)odeKey;
+             message.saveToChannel(establishProgress.channel);
+             establishProgress.messages.add(message);
+             if (establishProgress.weStartedExchange) {

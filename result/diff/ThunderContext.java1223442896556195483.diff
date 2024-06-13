@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
+@@ -111,7 +111,7 @@
+ 
+             PaymentData paymentData = new PaymentData();
+             paymentData.amount = amount;
+-            paymentData.onionObject = object;
++            paymentData.setOnionObject(object);
+             paymentData.secret = secret;
+             paymentData.timestampOpen = Tools.currentTime();
+             paymentData.timestampRefund = Tools.currentTime() + route.size()

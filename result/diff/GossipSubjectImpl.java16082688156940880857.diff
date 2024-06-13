@@ -1,0 +1,15 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipSubjectImpl.java
+@@ -81,7 +81,11 @@
+     }
+ 
+     private void broadcast () {
+-        synchronized (observerList) {
++        
++		/* ********OpenRefactory Warning********
++		 Synchronization should be on a private final field
++		*/
++		synchronized (observerList) {
+             for (NodeObserver observer : observerList) {
+                 List<ByteBuffer> objectList = dataObjectMap.get(observer);
+                 if (objectList.size() > GossipProcessor.OBJECT_AMOUNT_TO_SEND) {

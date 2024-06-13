@@ -1,0 +1,14 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
+@@ -327,7 +327,10 @@
+             if (!list.contains(obj)) {
+                 list.add(obj);
+             }
+-            synchronized (totalList) {
++            /* ********OpenRefactory Warning********
++			 Synchronization should be on a private final field
++			*/
++			synchronized (totalList) {
+                 if (!totalList.contains(obj)) {
+                     totalList.add(obj);
+                 }

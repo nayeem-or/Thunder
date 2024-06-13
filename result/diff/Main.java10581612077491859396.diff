@@ -1,0 +1,22 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/Main.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/Main.java
+@@ -135,7 +135,7 @@
+ 
+     public class OverlayUI <T> {
+         public Node ui;
+-        public T controller;
++        private T controller;
+ 
+         public OverlayUI (Node ui, T controller) {
+             this.ui = ui;
+@@ -180,6 +180,10 @@
+             this.controller = null;
+             currentOverlay = null;
+         }
++
++		public T getController() {
++			return controller;
++		}
+     }
+ 
+     @Nullable

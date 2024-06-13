@@ -1,0 +1,16 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/gossip/GossipProcessorImpl.java
+@@ -132,11 +132,11 @@
+             return;
+         }
+         PubkeyIPObject pubkeyIPObject = new PubkeyIPObject();
+-        pubkeyIPObject.pubkey = serverObject.pubKeyServer.getPubKey();
++        pubkeyIPObject.pubkey = serverObject.getPubKeyServer().getPubKey();
+         pubkeyIPObject.port = serverObject.portServer;
+         pubkeyIPObject.hostname = serverObject.hostServer;
+         pubkeyIPObject.timestamp = Tools.currentTime();
+-        pubkeyIPObject.sign(serverObject.pubKeyServer);
++        pubkeyIPObject.sign(serverObject.getPubKeyServer());
+ 
+         List<P2PDataObject> ipAddresses = new ArrayList<>();
+         ipAddresses.add(pubkeyIPObject);

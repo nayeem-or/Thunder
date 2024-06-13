@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
+@@ -23,7 +23,7 @@
+     public ECDHKeySet ecdhKeySet;
+ 
+     public ConnectionIntent intent = ConnectionIntent.MISC;
+-    public ResultCommand resultCallback = new NullResultCommand();
++    private ResultCommand resultCallback = new NullResultCommand();
+     //TODO apparently we need all kind of callbacks over here - move them into a common Connection object?
+     public List<Command> onAuthenticationFailed = new ArrayList<>();
+     public List<Command> onConnectionComplete = new ArrayList<>();
+@@ -86,4 +86,12 @@
+                 ", isServer=" + isServer +
+                 '}';
+     }
++
++	public ResultCommand getResultCallback() {
++		return resultCallback;
++	}
++
++	public void setResultCallback(ResultCommand resultCallback) {
++		this.resultCallback = resultCallback;
++	}
+ }

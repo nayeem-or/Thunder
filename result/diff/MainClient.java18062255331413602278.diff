@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
+@@ -44,7 +44,7 @@
+         Configuration configuration = new Gson().fromJson(config, Configuration.class);
+ 
+         ServerObject server = new ServerObject();
+-        server.portServer = configuration.portServer;
++        server.portServer = configuration.getPortServer();
+         server.hostServer = configuration.hostnameServer;
+ //        server.pubKeyServer = ECKey.fromPrivate(Tools.hexStringToByteArray(configuration.serverKey));
+         server.pubKeyServer = new ECKey();

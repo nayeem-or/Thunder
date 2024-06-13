@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
+@@ -18,7 +18,7 @@
+     public NodeKey nodeKey;
+ 
+     //Encryption keys
+-    public ECKey ephemeralKeyServer;
++    private ECKey ephemeralKeyServer;
+     public ECKey ephemeralKeyClient;
+     public ECDHKeySet ecdhKeySet;
+ 
+@@ -86,4 +86,8 @@
+                 ", isServer=" + isServer +
+                 '}';
+     }
++
++	public ECKey getEphemeralKeyServer() {
++		return ephemeralKeyServer;
++	}
+ }

@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -193,7 +193,7 @@
+ 
+     public void retrieveDataFromOtherChannel (Channel channel) {
+         keyClient = channel.keyServer;
+-        channelStatus.addressClient = channel.channelStatus.addressServer;
++        channelStatus.addressClient = channel.channelStatus.getAddressServer();
+         channelStatus.revoHashClientCurrent = channel.channelStatus.revoHashServerCurrent;
+         channelStatus.revoHashClientNext = channel.channelStatus.revoHashServerNext;
+         anchorTx = channel.anchorTx;

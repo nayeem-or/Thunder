@@ -1,0 +1,16 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -124,11 +124,11 @@
+ 
+         //Sufficient to test new payments
+         for (PaymentData payment : channelUpdate.newPayments) {
+-            int diff = Math.abs(Tools.currentTime() - payment.timestampOpen);
++            int diff = Math.abs(Tools.currentTime() - payment.getTimestampOpen());
+             if (diff > configuration.MAX_DIFF_TIMESTAMPS) {
+                 throw new LNPaymentException("timestampOpen is too far off. Calibrate your system clock. Diff: " + diff);
+             }
+-            diff = payment.timestampRefund - payment.timestampOpen;
++            diff = payment.timestampRefund - payment.getTimestampOpen();
+             if (diff > configuration.MAX_OVERLAY_REFUND * configuration.MAX_REFUND_DELAY * OnionObject.MAX_HOPS) {
+                 throw new LNPaymentException("Refund timeout is too large. Is: " + diff);
+             }

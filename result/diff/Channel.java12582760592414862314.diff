@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -55,7 +55,7 @@
+      * When we open the channel we set the index to some high value and decrease it every X hours.
+      * Whenever we commit to a new version of the channel, we use a new child derived from the index.
+      */
+-    public int shaChainDepthCurrent;
++    private int shaChainDepthCurrent;
+ 
+     /*
+      * Timestamps for the channel management.
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public int getShaChainDepthCurrent() {
++		return shaChainDepthCurrent;
++	}
++
++	public void setShaChainDepthCurrent(int shaChainDepthCurrent) {
++		this.shaChainDepthCurrent = shaChainDepthCurrent;
++	}
++
+     //endregion
+ }

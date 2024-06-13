@@ -1,0 +1,56 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
+@@ -522,7 +522,7 @@
+                     }
+ 
+                     paymentWrapper.paymentData.secret = payment.secret;
+-                    if (Objects.equals(paymentWrapper.receiver, nodeKey)) {
++                    if (Objects.equals(paymentWrapper.getReceiver(), nodeKey)) {
+                         paymentWrapper.statusReceiver = REDEEMED;
+                         paymentWrapper.statusSender = TO_BE_REDEEMED;
+                     } else if (Objects.equals(paymentWrapper.sender, nodeKey)) {
+@@ -538,7 +538,7 @@
+                         throw new RuntimeException("Refunded an unknown payment?");
+                     }
+ 
+-                    if (Objects.equals(paymentWrapper.receiver, nodeKey)) {
++                    if (Objects.equals(paymentWrapper.getReceiver(), nodeKey)) {
+                         paymentWrapper.statusReceiver = REFUNDED;
+                         paymentWrapper.statusSender = TO_BE_REFUNDED;
+                     } else if (Objects.equals(paymentWrapper.sender, nodeKey)) {
+@@ -605,7 +605,7 @@
+                     }
+                 }
+             } else {
+-                if (nodeKey.equals(p.receiver)) {
++                if (nodeKey.equals(p.getReceiver())) {
+                     if (p.statusReceiver == searchFor) {
+                         p.statusReceiver = replaceWith;
+                         paymentList.add(p.paymentData);
+@@ -621,7 +621,7 @@
+         synchronized (payments) {
+ 
+             payments.stream()
+-                    .filter(p -> Objects.equals(p.receiver, nodeKey))
++                    .filter(p -> Objects.equals(p.getReceiver(), nodeKey))
+                     .filter(p -> paymentList.contains(p.paymentData))
+                     .forEach(p -> {
+                         if (p.statusReceiver == CURRENTLY_EMBEDDING) {
+@@ -854,7 +854,7 @@
+     @Override
+     public void addPayment (NodeKey nodeKey, PaymentData paymentData) {
+         PaymentWrapper paymentWrapper = new PaymentWrapper();
+-        paymentWrapper.receiver = nodeKey;
++        paymentWrapper.setReceiver(nodeKey);
+         paymentWrapper.statusReceiver = TO_BE_EMBEDDED;
+         paymentWrapper.paymentData = paymentData;
+         synchronized (payments) {
+@@ -868,7 +868,7 @@
+             for (PaymentWrapper p : payments) {
+                 if (p.equals(paymentWrapper)) {
+                     p.paymentData = paymentWrapper.paymentData;
+-                    p.receiver = paymentWrapper.receiver;
++                    p.setReceiver(paymentWrapper.getReceiver());
+                     p.sender = paymentWrapper.sender;
+                     p.statusReceiver = paymentWrapper.statusReceiver;
+                     p.statusSender = paymentWrapper.statusSender;

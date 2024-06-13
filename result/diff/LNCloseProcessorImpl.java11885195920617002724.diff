@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -190,7 +190,7 @@
+         //TODO move obligation to save channel object in ChannelManagement
+         //Need to also keep track of channels after reconnecting..
+ 
+-        setNode(node.nodeKey);
++        setNode(node.getNodeKey());
+         this.messageExecutor = messageExecutor;
+         this.channelManager.addChannelCloser(getNode(), this);
+         this.messageExecutor.sendNextLayerActive();

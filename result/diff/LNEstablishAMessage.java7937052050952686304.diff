@@ -1,0 +1,22 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishAMessage.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishAMessage.java
+@@ -47,8 +47,8 @@
+         try {
+             Transaction newAnchorTx = new Transaction(Constants.getNetwork(), anchorTransaction);
+ 
+-            if (channel.anchorTx != null) {
+-                if (Tools.checkIfExistingInOutPutsAreEqual(channel.anchorTx, newAnchorTx)) {
++            if (channel.getAnchorTx() != null) {
++                if (Tools.checkIfExistingInOutPutsAreEqual(channel.getAnchorTx(), newAnchorTx)) {
+                     throw new LNEstablishException("Our in/outputs of the anchor has been changed..");
+                 }
+             }
+@@ -60,7 +60,7 @@
+             }
+ 
+             channel.keyClient = ECKey.fromPublicOnly(channelKeyServer);
+-            channel.anchorTx = newAnchorTx;
++            channel.setAnchorTx(newAnchorTx);
+             channel.channelStatus.addressClient = new Address(Constants.getNetwork(), addressBytes);
+             channel.channelStatus.revoHashClientCurrent = revocationHash;
+             channel.channelStatus.revoHashClientNext = revocationHashNext;

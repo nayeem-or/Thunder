@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -289,7 +289,7 @@
+     private ChannelStatus toChannelStatus() {
+         ChannelStatus channelStatus = new ChannelStatus();
+         channelStatus.amountClient = amountClient;
+-        channelStatus.amountServer = amountServer;
++        channelStatus.setAmountServer(amountServer);
+         channelStatus.paymentList = paymentList.stream()
+                 .map(PaymentDataEntity::toPaymentData)
+                 .collect(Collectors.toList());
+@@ -310,7 +310,7 @@
+ 
+     private void fromChannelStatus (ChannelStatus channelStatus) {
+         amountClient = channelStatus.amountClient;
+-        amountServer = channelStatus.amountServer;
++        amountServer = channelStatus.getAmountServer();
+         feePerByte = channelStatus.feePerByte;
+         csvDelay = channelStatus.csvDelay;
+         if (channelStatus.revoHashClientCurrent != null) {

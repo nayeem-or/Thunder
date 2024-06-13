@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelStatusObjectEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelStatusObjectEntity.java
+@@ -37,7 +37,7 @@
+         feeB = channelStatusObject.feeB;
+         signatureA = channelStatusObject.signatureA;
+         signatureB = channelStatusObject.signatureB;
+-        timestamp = channelStatusObject.timestamp;
++        timestamp = channelStatusObject.getTimestamp();
+     }
+ 
+     public ChannelStatusObject toChannelStatusObject() {
+@@ -51,7 +51,7 @@
+         channelStatusObject.feeB = feeB;
+         channelStatusObject.signatureA = signatureA;
+         channelStatusObject.signatureB = signatureB;
+-        channelStatusObject.timestamp = timestamp;
++        channelStatusObject.setTimestamp(timestamp);
+         return channelStatusObject;
+     }
+ 
