@@ -1,0 +1,36 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
+@@ -84,21 +84,21 @@
+ 
+     public void applyUpdate (ChannelUpdate update) {
+         for (PaymentData refund : update.refundedPayments) {
+-            if (refund.sending) {
++            if (refund.getSending()) {
+                 amountServer += refund.amount;
+             } else {
+                 amountClient += refund.amount;
+             }
+         }
+         for (PaymentData redeem : update.redeemedPayments) {
+-            if (redeem.sending) {
++            if (redeem.getSending()) {
+                 amountClient += redeem.amount;
+             } else {
+                 amountServer += redeem.amount;
+             }
+         }
+         for (PaymentData payment : update.newPayments) {
+-            if (payment.sending) {
++            if (payment.getSending()) {
+                 amountServer -= payment.amount;
+             } else {
+                 amountClient -= payment.amount;
+@@ -148,7 +148,7 @@
+ 
+     private List<PaymentData> reverseSending (List<PaymentData> paymentDataList) {
+         for (PaymentData payment : paymentDataList) {
+-            payment.sending = !payment.sending;
++            payment.setSending(!payment.getSending());
+         }
+         return paymentDataList;
+     }

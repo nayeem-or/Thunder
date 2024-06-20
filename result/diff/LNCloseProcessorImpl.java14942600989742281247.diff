@@ -1,0 +1,17 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -151,12 +151,12 @@
+ 
+         //This gets called as well when the connection breaks down and we connect back to the other party
+         //For now we take it that we may negotiate a close with a different fee
+-        Transaction closingTransaction = getClosingTransaction(closingStatus, serverObject.configuration.DEFAULT_FEE_PER_BYTE_CLOSING);
++        Transaction closingTransaction = getClosingTransaction(closingStatus, serverObject.configuration.getDEFAULT_FEE_PER_BYTE_CLOSING());
+         sendCloseMessage(getTransactionSignatures(closingTransaction));
+     }
+ 
+     private void sendCloseMessage (List<TransactionSignature> signatureList) {
+-        LNClose close = messageFactory.getLNCloseAMessage(channelHashToClose, signatureList, serverObject.configuration.DEFAULT_FEE_PER_BYTE_CLOSING);
++        LNClose close = messageFactory.getLNCloseAMessage(channelHashToClose, signatureList, serverObject.configuration.getDEFAULT_FEE_PER_BYTE_CLOSING());
+         messageExecutor.sendMessageUpwards(close);
+ 
+     }

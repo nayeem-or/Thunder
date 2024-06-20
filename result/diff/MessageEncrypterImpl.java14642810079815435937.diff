@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/MessageEncrypterImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/MessageEncrypterImpl.java
+@@ -18,7 +18,7 @@
+     public EncryptedMessage encrypt (Message data, ECDHKeySet keySet) {
+         byte[] bytes = serializater.serializeMessage(data);
+ 
+-        byte[] enc = CryptoTools.encryptAES_CTR(bytes, keySet.encryptionKey, keySet.ivServer, keySet.counterOut);
++        byte[] enc = CryptoTools.encryptAES_CTR(bytes, keySet.encryptionKey, keySet.ivServer, keySet.getCounterOut());
+         byte[] hmac = CryptoTools.getHMAC(enc, keySet.hmacKey);
+ 
+         return new EncryptedMessage(hmac, enc);

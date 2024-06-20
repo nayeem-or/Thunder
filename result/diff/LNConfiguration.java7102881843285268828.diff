@@ -1,0 +1,17 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/LNConfiguration.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/LNConfiguration.java
+@@ -25,9 +25,13 @@
+     public float DEFAULT_FEE_PER_BYTE_CLOSING = 5;
+     public float MAX_FEE_PER_BYTE_CLOSING = 10;
+ 
+-    public int MAX_DIFF_TIMESTAMPS = 60;
++    private int MAX_DIFF_TIMESTAMPS = 60;
+ 
+     public int getTimeToReduceWhenRelayingPayment () {
+         return Tools.getRandom(DEFAULT_REFUND_DELAY * DEFAULT_OVERLAY_REFUND, MAX_REFUND_DELAY * MAX_OVERLAY_REFUND);
+     }
++
++	public int getMAX_DIFF_TIMESTAMPS() {
++		return MAX_DIFF_TIMESTAMPS;
++	}
+ }

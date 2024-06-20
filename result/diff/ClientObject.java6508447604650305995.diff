@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
+@@ -15,7 +15,7 @@
+ public class ClientObject {
+     public boolean isServer;
+ 
+-    public NodeKey nodeKey;
++    private NodeKey nodeKey;
+ 
+     //Encryption keys
+     public ECKey ephemeralKeyServer;
+@@ -86,4 +86,12 @@
+                 ", isServer=" + isServer +
+                 '}';
+     }
++
++	public NodeKey getNodeKey() {
++		return nodeKey;
++	}
++
++	public void setNodeKey(NodeKey nodeKey) {
++		this.nodeKey = nodeKey;
++	}
+ }

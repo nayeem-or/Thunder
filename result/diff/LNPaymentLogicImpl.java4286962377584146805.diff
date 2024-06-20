@@ -1,0 +1,22 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -41,7 +41,7 @@
+         //Missing two signatures, max 146B
+         long fee = (long) Math.ceil((transaction.getMessageSize() + SIGNATURE_SIZE) * channelStatus.feePerByte / 2);
+         transaction.getOutput(0).setValue(Coin.valueOf(channelStatus.amountClient - fee));
+-        transaction.getOutput(1).setValue(Coin.valueOf(channelStatus.amountServer - fee));
++        transaction.getOutput(1).setValue(Coin.valueOf(channelStatus.getAmountServer() - fee));
+ 
+         return transaction;
+     }
+@@ -118,8 +118,8 @@
+         checkRefundedPayments(channelUpdate);
+         checkRedeemedPayments(channelUpdate);
+ 
+-        if (newStatus.amountClient < 0 || newStatus.amountServer < 0) {
+-            throw new LNPaymentException("Amount is negative: " + newStatus.amountServer + " " + newStatus.amountClient);
++        if (newStatus.amountClient < 0 || newStatus.getAmountServer() < 0) {
++            throw new LNPaymentException("Amount is negative: " + newStatus.getAmountServer() + " " + newStatus.amountClient);
+         }
+ 
+         //Sufficient to test new payments

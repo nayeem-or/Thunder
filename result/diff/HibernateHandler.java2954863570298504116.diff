@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
+@@ -493,7 +493,7 @@
+                         if (secrets.contains(payment.secret)) {
+                             paymentWrapper.paymentData.secret = getPaymentSecret(payment.secret);
+                             paymentWrapper.statusSender = TO_BE_REDEEMED;
+-                        } else if (onion.isLastHop) {
++                        } else if (onion.getIsLastHop()) {
+                             System.out.println("Don't have the payment secret - refund..");
+                             paymentWrapper.statusSender = TO_BE_REFUNDED;
+                         } else {

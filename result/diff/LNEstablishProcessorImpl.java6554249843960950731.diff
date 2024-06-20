@@ -1,0 +1,33 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -243,7 +243,7 @@
+         prepareOpenChannel();
+         this.establishProgress.channel.channelStatus.amountServer = getAmountForNewChannel();
+         this.establishProgress.channel.channelStatus.amountClient = getAmountForNewChannel();
+-        this.establishProgress.channel.channelStatus.feePerByte = 3;
++        this.establishProgress.channel.channel.setFeePerByte(y)te = 3;
+         this.establishProgress.weStartedExchange = true;
+         sendEstablishMessageA();
+     }

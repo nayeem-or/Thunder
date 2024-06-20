@@ -1,0 +1,29 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
+@@ -87,7 +87,7 @@
+ 
+         ConnectionListener listener = connectionListenerMap.get(node);
+         if (listener != null) {
+-            listener.onSuccess.execute();
++            listener.getOnSuccess().execute();
+             connectionListenerMap.remove(node);
+         }
+         currentlyConnecting.remove(node);
+@@ -109,7 +109,7 @@
+         if (connectedNodes.contains(node)) {
+             //Already connected
+             overrideIntentIfNecessary(node, intent);
+-            connectionListener.onSuccess.execute();
++            connectionListener.getOnSuccess().execute();
+         } else if (currentlyConnecting.contains(node)) {
+             //TODO we are overwriting the old listener - not sure if rather multimap or normal map..
+             overrideIntentIfNecessary(node, intent);
+@@ -349,7 +349,7 @@
+ 
+                     ConnectionListener connectionListener = new ConnectionListener();
+                     connectionListener.onFailure = this::connectionFailed;
+-                    connectionListener.onSuccess = this::connectionEstablished;
++                    connectionListener.setOnSuccess(this::connectionEstablished);
+ 
+                     currentlyConnecting++;
+                     connect(nodeKey, intent, connectionListener);

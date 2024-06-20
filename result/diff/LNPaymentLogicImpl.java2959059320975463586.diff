@@ -1,0 +1,31 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -33,7 +33,7 @@
+                         channelStatus.revoHashServerNext,
+                         server,
+                         client,
+-                        channelStatus.csvDelay));
++                        channelStatus.getCsvDelay()));
+ 
+         transaction.addOutput(Coin.valueOf(0), channelStatus.addressClient);
+         transaction = addPayments(transaction, channelStatus, channelStatus.revoHashServerNext, server, client);
+@@ -94,7 +94,7 @@
+             transaction.addInput(parentTransactionHash, index, Tools.getDummyScript());
+ 
+             Coin value = Coin.valueOf(payment.amount);
+-            Script script = ScriptTools.getPaymentTxOutput(keyServer, keyClient, channelStatus.revoHashServerNext, channelStatus.csvDelay);
++            Script script = ScriptTools.getPaymentTxOutput(keyServer, keyClient, channelStatus.revoHashServerNext, channelStatus.getCsvDelay());
+             transaction.addOutput(value, script);
+ 
+             transactions.add(transaction);
+@@ -137,8 +137,8 @@
+                 throw new LNPaymentException("Refund timeout is too short. Is: " + diff);
+             }
+         }
+-        if (newStatus.csvDelay < configuration.MIN_REVOCATION_DELAY || newStatus.csvDelay > configuration.MAX_REVOCATION_DELAY) {
+-            throw new LNPaymentException("Revocation delay not within allowed boundaries. Is: " + newStatus.csvDelay);
++        if (newStatus.getCsvDelay() < configuration.MIN_REVOCATION_DELAY || newStatus.getCsvDelay() > configuration.MAX_REVOCATION_DELAY) {
++            throw new LNPaymentException("Revocation delay not within allowed boundaries. Is: " + newStatus.getCsvDelay());
+         }
+         if (newStatus.feePerByte > configuration.MAX_FEE_PER_BYTE || newStatus.feePerByte < configuration.MIN_FEE_PER_BYTE) {
+             throw new LNPaymentException("feePerByte not within allowed boundaries. Is: " + newStatus.feePerByte);

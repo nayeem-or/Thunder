@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/LNConfiguration.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/LNConfiguration.java
+@@ -5,7 +5,7 @@
+ public class LNConfiguration {
+     //Class for holding all the different settings with sane defaults set
+ 
+-    public int MIN_FEE_PER_BYTE = 1;
++    private int MIN_FEE_PER_BYTE = 1;
+     public int DEFAULT_FEE_PER_BYTE = 5;
+     public int MAX_FEE_PER_BYTE = 30;
+ 
+@@ -30,4 +30,8 @@
+     public int getTimeToReduceWhenRelayingPayment () {
+         return Tools.getRandom(DEFAULT_REFUND_DELAY * DEFAULT_OVERLAY_REFUND, MAX_REFUND_DELAY * MAX_OVERLAY_REFUND);
+     }
++
++	public int getMIN_FEE_PER_BYTE() {
++		return MIN_FEE_PER_BYTE;
++	}
+ }

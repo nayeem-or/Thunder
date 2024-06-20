@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ServerObject.java
+@@ -20,7 +20,7 @@
+     public ServerObject (ClientObject node) {
+         init();
+         this.portServer = node.port;
+-        this.hostServer = node.host;
++        this.hostServer = node.getHost();
+         this.pubKeyServer = node.nodeKey.nodeKey;
+     }
+ 

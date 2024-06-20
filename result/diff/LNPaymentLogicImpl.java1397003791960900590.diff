@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -140,7 +140,7 @@
+         if (newStatus.csvDelay < configuration.MIN_REVOCATION_DELAY || newStatus.csvDelay > configuration.MAX_REVOCATION_DELAY) {
+             throw new LNPaymentException("Revocation delay not within allowed boundaries. Is: " + newStatus.csvDelay);
+         }
+-        if (newStatus.feePerByte > configuration.MAX_FEE_PER_BYTE || newStatus.feePerByte < configuration.MIN_FEE_PER_BYTE) {
++        if (newStatus.feePerByte > configuration.getMAX_FEE_PER_BYTE() || newStatus.feePerByte < configuration.MIN_FEE_PER_BYTE) {
+             throw new LNPaymentException("feePerByte not within allowed boundaries. Is: " + newStatus.feePerByte);
+         }
+     }

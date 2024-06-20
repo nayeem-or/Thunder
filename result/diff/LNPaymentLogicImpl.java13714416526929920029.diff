@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -51,7 +51,7 @@
+         Iterable<PaymentData> allPayments = new ArrayList<>(channelStatus.paymentList);
+ 
+         for (PaymentData payment : allPayments) {
+-            Coin value = Coin.valueOf(payment.amount);
++            Coin value = Coin.valueOf(payment.getAmount());
+             Script script;
+             if (payment.sending) {
+                 script = ScriptTools.getChannelTxOutputPaymentSending(keyServer, keyClient, revocationHash, payment.secret, payment.timestampRefund);
+@@ -93,7 +93,7 @@
+             Transaction transaction = new Transaction(Constants.getNetwork());
+             transaction.addInput(parentTransactionHash, index, Tools.getDummyScript());
+ 
+-            Coin value = Coin.valueOf(payment.amount);
++            Coin value = Coin.valueOf(payment.getAmount());
+             Script script = ScriptTools.getPaymentTxOutput(keyServer, keyClient, channelStatus.revoHashServerNext, channelStatus.csvDelay);
+             transaction.addOutput(value, script);
+ 

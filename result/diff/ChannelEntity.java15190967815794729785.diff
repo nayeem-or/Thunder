@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -294,7 +294,7 @@
+                 .map(PaymentDataEntity::toPaymentData)
+                 .collect(Collectors.toList());
+         channelStatus.feePerByte = feePerByte;
+-        channelStatus.csvDelay = csvDelay;
++        channelStatus.setCsvDelay(csvDelay);
+         channelStatus.revoHashClientCurrent = revoHashClientCurrent == null ? null
+                 : revoHashClientCurrent.toRevocationHash();
+         channelStatus.revoHashServerCurrent = revoHashServerCurrent == null ? null
+@@ -312,7 +312,7 @@
+         amountClient = channelStatus.amountClient;
+         amountServer = channelStatus.amountServer;
+         feePerByte = channelStatus.feePerByte;
+-        csvDelay = channelStatus.csvDelay;
++        csvDelay = channelStatus.getCsvDelay();
+         if (channelStatus.revoHashClientCurrent != null) {
+             revoHashClientCurrent = new RevocationHashEmbedded(channelStatus.revoHashClientCurrent);
+         }

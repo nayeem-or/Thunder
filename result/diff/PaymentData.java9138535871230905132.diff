@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
+@@ -22,7 +22,7 @@
+ public class PaymentData implements Cloneable {
+ 
+     public boolean sending;
+-    public long amount;
++    private long amount;
+ 
+     public PaymentSecret secret;
+     public int timestampOpen;
+@@ -84,4 +84,12 @@
+             throw new RuntimeException(e);
+         }
+     }
++
++	public long getAmount() {
++		return amount;
++	}
++
++	public void setAmount(long amount) {
++		this.amount = amount;
++	}
+ }

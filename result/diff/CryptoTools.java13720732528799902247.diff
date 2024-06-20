@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/crypto/CryptoTools.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/crypto/CryptoTools.java
+@@ -32,7 +32,7 @@
+     public static byte[] getHMAC (byte[] data, byte[] keyBytes) {
+         try {
+             SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "HmacSHA1");
+-            Mac mac = Mac.getInstance("HmacSHA1");
++            Mac mac = Mac.getInstance("HmacSHA256");
+             mac.init(keySpec);
+             return mac.doFinal(data);
+         } catch (Exception e) {

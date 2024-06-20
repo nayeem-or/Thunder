@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishMessageFactoryImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishMessageFactoryImpl.java
+@@ -18,7 +18,7 @@
+                 channel.channelStatus.amountServer,
+                 0,  //TODO add some reasonable minConfirmations
+                 channel.channelStatus.addressServer,
+-                channel.channelStatus.feePerByte,
++                channel.channelStatus.getFeePerByte(),
+                 channel.channelStatus.csvDelay);
+         return message;
+     }
