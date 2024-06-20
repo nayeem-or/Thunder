@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/Tools.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/etc/Tools.java
+@@ -114,7 +114,7 @@
+                 transaction,
+                 0,
+                 ScriptTools.getAnchorOutputScript(channel.keyClient, channel.keyServer).getProgram(),
+-                channel.keyServer);
++                channel.getKeyServer());
+ 
+         List<TransactionSignature> channelSignatures = new ArrayList<>();
+ 

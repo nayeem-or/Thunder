@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishAMessage.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishAMessage.java
+@@ -54,7 +54,7 @@
+             }
+ 
+             //Don't allow changing the values for now, symmetric messages are easy to implement though
+-            if (channel.channelStatus.amountServer == 0 || channel.channelStatus.amountClient == 0) {
++            if (channel.getChannelStatus().amountServer == 0 || channel.getChannelStatus().amountClient == 0) {
+                 channel.channelStatus.amountClient = amountClient;
+                 channel.channelStatus.amountServer = amountServer;
+             }

@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -89,7 +89,7 @@
+         long amountServer = temp.amountServer;
+ 
+         for (PaymentData paymentData : temp.paymentList) {
+-            amountClient += paymentData.amount;
++            amountClient += paymentData.getAmount();
+         }
+ 
+         temp.paymentList.clear();

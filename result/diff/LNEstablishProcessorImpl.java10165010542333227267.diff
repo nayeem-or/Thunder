@@ -1,0 +1,33 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -234,7 +234,7 @@
+         //Only support one channel per connection for now..
+         if (dbHandler.getOpenChannel(node.nodeKey).size() > 0) {
+             System.out.println("LNEstablishProcessorImpl.openChannel - already connected!");
+-            callback.onSuccess.execute();
++            calgetOnSuccess()uccess.execute();
+             return;
+         }
+         //TODO take values from channel object to choose opening values

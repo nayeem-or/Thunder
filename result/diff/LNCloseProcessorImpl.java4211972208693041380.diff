@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -136,7 +136,7 @@
+         dbHandler.updateChannelStatus(
+                 getNode(),
+                 channel.getHash(),
+-                serverObject.pubKeyServer,
++                serverObject.getPubKeyServer(),
+                 channel, null, null, null, null);
+ 
+         calculateAndSendCloseMessage();
+@@ -216,7 +216,7 @@
+         dbHandler.updateChannelStatus(
+                 getNode(),
+                 channel.getHash(),
+-                serverObject.pubKeyServer,
++                serverObject.getPubKeyServer(),
+                 channel, null, null, null, null);
+ 
+         if (sendSignaturesBack) {

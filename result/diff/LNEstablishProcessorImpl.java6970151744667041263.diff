@@ -1,0 +1,42 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -295,7 +295,7 @@
+             paymentLogic.checkSignatures(
+                     establishProgress.channel.keyServer,
+                     establishProgress.channel.keyClient,
+-                    establishProgress.channel.channelSignatures,
++                    establishProgress.chgetChannelSignatures()atures,
+                     channelTransaction,
+                     Collections.emptyList(),
+                     establishProgress.channel.channelStatus
+@@ -396,7 +396,7 @@
+                 establishProgress.channel.keyClient
+         );
+ 
+-        establishProgress.channel.channelSignatures = paymentLogic.getSignatureObject(establishProgress.channel, channelTransaction, Collections.emptyList());
++  establishProgress.channel.setChannelSignatures(res = paymentLogic.getSignatureObject(establishProgress.channel, channelTransaction, Collections.emptyL)ist());
+ 
+         LNEstablish message = messageFactory.getEstablishMessageB(establishProgress.channel.channelSignatures.channelSignatures.get(0));
+         establishProgress.messages.add(message);

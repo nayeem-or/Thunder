@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
+@@ -313,7 +313,7 @@
+         node.isServer = false;
+         node.intent = intent;
+         node.nodeKey = new NodeKey(ipObject.pubkey);
+-        node.host = ipObject.hostname;
++        node.host = ipObject.getHostname();
+         node.port = ipObject.port;
+         return node;
+     }

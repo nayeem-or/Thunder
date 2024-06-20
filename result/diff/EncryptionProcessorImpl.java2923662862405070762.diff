@@ -1,0 +1,17 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
+@@ -96,8 +96,12 @@
+                     System.out.println("I: " + getClientName() + " " + decryptedMessage);
+                 }
+             } else {
+-                System.out.println("I: " +
+-                        getMessageNumber(decryptedMessage) + " " +
++                long getMessageNumberResult = getMessageNumber(decryptedMessage);
++				// OR Warning: Handle Error Code
++				if (getMessageNumberResult == -1) {
++				}
++				System.out.println("I: " +
++                        getMessageNumberResult + " " +
+                         getAckedMessageNumber(decryptedMessage) + " " +
+                         getClientName() + " " +
+                         decryptedMessage + "[" + (message.payload.length / 1024) + "]");

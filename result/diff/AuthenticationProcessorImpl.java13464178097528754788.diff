@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/authentication/AuthenticationProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/authentication/AuthenticationProcessorImpl.java
+@@ -67,7 +67,7 @@
+     }
+ 
+     public boolean shouldSendAuthenticationFirst () {
+-        return !node.isServer;
++        return !node.getIsServer();
+     }
+ 
+     public void sendAuthentication () {

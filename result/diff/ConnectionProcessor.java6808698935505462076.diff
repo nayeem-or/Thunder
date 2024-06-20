@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/ConnectionProcessor.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/ConnectionProcessor.java
+@@ -20,7 +20,7 @@
+     @Override
+     public void onLayerActive (MessageExecutor messageExecutor) {
+         messageExecutor.sendNextLayerActive();
+-        setNode(node.nodeKey);
++        setNode(node.getNodeKey());
+         this.messageExecutor = messageExecutor;
+         connectionRegistry.onConnected(getNode(), this);
+         node.onConnectionComplete.stream().forEach(Command::execute);

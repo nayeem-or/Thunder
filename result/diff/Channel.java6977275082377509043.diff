@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -36,7 +36,7 @@
+ 
+ public class Channel {
+ 
+-    public int id;
++    private int id;
+     public NodeKey nodeKeyClient;
+     private Sha256Hash hash;
+     /*
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public int getId() {
++		return id;
++	}
++
++	public void setId(int id) {
++		this.id = id;
++	}
++
+     //endregion
+ }

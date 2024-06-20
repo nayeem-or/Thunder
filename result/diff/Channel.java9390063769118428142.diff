@@ -1,0 +1,38 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -141,7 +141,7 @@
+         outputList.add(new TransactionOutput(
+                 Constants.getNetwork(),
+                 null,
+-                Coin.valueOf(channelStatus.amountClient + channelStatus.amountServer),
++                Coin.valueOf(channelStatus.amountClient + channelStatus.getAmountServer()),
+                 getAnchorScript().getProgram()));
+ 
+         outputList.addAll(anchorTx.getOutputs());
+@@ -155,7 +155,7 @@
+     }
+ 
+     public void fillAnchorTransactionWithoutSignatures (WalletHelper walletHelper) {
+-        long totalAmount = channelStatus.amountServer + channelStatus.amountClient;
++        long totalAmount = channelStatus.getAmountServer() + channelStatus.amountClient;
+ 
+         if (anchorTx == null) {
+             Script anchorScriptServer = getAnchorScriptOutput();
+@@ -164,7 +164,7 @@
+             anchorTx.addOutput(Coin.valueOf(totalAmount), anchorScriptServerP2SH);
+         }
+ 
+-        anchorTx = walletHelper.addInputs(anchorTx, channelStatus.amountServer, channelStatus.feePerByte);
++        anchorTx = walletHelper.addInputs(anchorTx, channelStatus.getAmountServer(), channelStatus.feePerByte);
+ 
+         anchorTxHash = anchorTx.getHash();
+     }
+@@ -187,7 +187,7 @@
+     public Channel (byte[] nodeId, long amount) {
+         this();
+         channelStatus.amountClient = amount;
+-        channelStatus.amountServer = amount;
++        channelStatus.setAmountServer(amount);
+         nodeKeyClient = new NodeKey(nodeId);
+     }
+ 

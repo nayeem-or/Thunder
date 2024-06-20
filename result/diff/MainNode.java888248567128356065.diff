@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
+@@ -189,7 +189,7 @@
+         System.out.println("Nodes currently online: ");
+ 
+         for (PubkeyIPObject ipObject : dbHandler.getIPObjects()) {
+-            System.out.format("%10s %-50s %48s%n", "", ipObject.hostname + ":" + ipObject.port, Tools.bytesToHex(ipObject.pubkey));
++            System.out.format("%10s %-50s %48s%n", "", ipObject.getHostname() + ":" + ipObject.port, Tools.bytesToHex(ipObject.pubkey));
+         }
+         System.out.println();
+         System.out.println("Choose pubkeys of nodes to connect to (random for complete random, empty when done)");

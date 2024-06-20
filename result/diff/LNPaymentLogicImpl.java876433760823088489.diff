@@ -1,0 +1,27 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -30,13 +30,13 @@
+         transaction.addInput(anchor.getHash(), anchor.getIndex(), Tools.getDummyScript());
+         transaction.addOutput(Coin.valueOf(0),
+                 ScriptTools.getChannelTxOutputRevocation(
+-                        channelStatus.revoHashServerNext,
++                        channelStatus.getRevoHashServerNext(),
+                         server,
+                         client,
+                         channelStatus.csvDelay));
+ 
+         transaction.addOutput(Coin.valueOf(0), channelStatus.addressClient);
+-        transaction = addPayments(transaction, channelStatus, channelStatus.revoHashServerNext, server, client);
++        transaction = addPayments(transaction, channelStatus, channelStatus.getRevoHashServerNext(), server, client);
+ 
+         //Missing two signatures, max 146B
+         long fee = (long) Math.ceil((transaction.getMessageSize() + SIGNATURE_SIZE) * channelStatus.feePerByte / 2);
+@@ -94,7 +94,7 @@
+             transaction.addInput(parentTransactionHash, index, Tools.getDummyScript());
+ 
+             Coin value = Coin.valueOf(payment.amount);
+-            Script script = ScriptTools.getPaymentTxOutput(keyServer, keyClient, channelStatus.revoHashServerNext, channelStatus.csvDelay);
++            Script script = ScriptTools.getPaymentTxOutput(keyServer, keyClient, channelStatus.getRevoHashServerNext(), channelStatus.csvDelay);
+             transaction.addOutput(value, script);
+ 
+             transactions.add(transaction);

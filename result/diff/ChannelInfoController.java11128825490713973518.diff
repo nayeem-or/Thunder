@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/ChannelInfoController.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/ChannelInfoController.java
+@@ -78,7 +78,7 @@
+         balanceClient.setText(Coin.valueOf(channel.channelStatus.amountClient).toFriendlyString());
+         balanceServer.setText(Coin.valueOf(channel.channelStatus.amountServer).toFriendlyString());
+ 
+-        labelOpen.setText(new Date(((long) channel.timestampOpen) * 1000).toString());
++        labelOpen.setText(new Date(((long) channel.getTimestampOpen()) * 1000).toString());
+ 
+         txOpen.setText(Tools.bytesToHex(channel.anchorTx.bitcoinSerialize()));
+ 

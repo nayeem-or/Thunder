@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ClientObject.java
+@@ -28,7 +28,7 @@
+     public List<Command> onAuthenticationFailed = new ArrayList<>();
+     public List<Command> onConnectionComplete = new ArrayList<>();
+ 
+-    public String host;
++    private String host;
+     public int port;
+ 
+     public String name;
+@@ -86,4 +86,12 @@
+                 ", isServer=" + isServer +
+                 '}';
+     }
++
++	public String getHost() {
++		return host;
++	}
++
++	public void setHost(String host) {
++		this.host = host;
++	}
+ }

@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/ChannelStatus.java
+@@ -21,7 +21,7 @@
+     //Various revocation hashes are stored here. They get swapped downwards after an exchange (Next->Current; NextNext->Next)
+     //Current revocation hash is the one that we have a current valid channel transaction with
+     public RevocationHash revoHashClientCurrent;
+-    public RevocationHash revoHashServerCurrent;
++    private RevocationHash revoHashServerCurrent;
+ 
+     //Next revocation hash is the hash used when creating a new channel transaction
+     public RevocationHash revoHashClientNext;
+@@ -189,4 +189,12 @@
+         s = s.substring(0, s.length() - 2);
+         return s;
+     }
++
++	public RevocationHash getRevoHashServerCurrent() {
++		return revoHashServerCurrent;
++	}
++
++	public void setRevoHashServerCurrent(RevocationHash revoHashServerCurrent) {
++		this.revoHashServerCurrent = revoHashServerCurrent;
++	}
+ }

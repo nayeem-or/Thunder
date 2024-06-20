@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
+@@ -172,7 +172,7 @@
+ 
+     public void startListening (ResultCommand callback) {
+         server = new P2PServer(contextFactory);
+-        server.startServer(this.node.portServer);
++        server.startServer(this.node.getPortServer());
+         callback.execute(new SuccessResult());
+     }
+ 

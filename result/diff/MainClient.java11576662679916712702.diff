@@ -1,0 +1,27 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
+@@ -47,7 +47,7 @@
+         server.portServer = configuration.portServer;
+         server.hostServer = configuration.hostnameServer;
+ //        server.pubKeyServer = ECKey.fromPrivate(Tools.hexStringToByteArray(configuration.serverKey));
+-        server.pubKeyServer = new ECKey();
++        server.setPubKeyServer(new ECKey());
+ 
+         List<byte[]> nodesToBuildChannelWith = new ArrayList<>();
+         for (String s : configuration.nodesToBuildChannelWith) {
+@@ -78,13 +78,13 @@
+         LNOnionHelper onionHelper = contextFactory.getOnionHelper();
+ 
+         List<byte[]> route = new ArrayList<>();
+-        route.add(server.pubKeyServer.getPubKey());
++        route.add(server.getPubKeyServer().getPubKey());
+ 
+         route.add(Tools.hexStringToByteArray("0392af24ee17b39bf50a61fd679d1c50585d5751d1ca221e91c1535e34d85c50ea"));
+         route.add(Tools.hexStringToByteArray("02b247ef9a0e23da6f5db858a48a839242a596ff972f55ecc7fa42e3003e7b713b"));
+         route.add(Tools.hexStringToByteArray("021d381f233a902f1572a8c62b58d2b7108cb6292d065861fed1c6eb54e8483b23"));
+ 
+-        route.add(server.pubKeyServer.getPubKey());
++        route.add(server.getPubKeyServer().getPubKey());
+ 
+         OnionObject onionObject = onionHelper.createOnionObject(route, null);
+         PaymentData paymentData = new PaymentData();

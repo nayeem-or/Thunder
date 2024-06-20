@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishMessageFactoryImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/messages/LNEstablishMessageFactoryImpl.java
+@@ -10,7 +10,7 @@
+     @Override
+     public LNEstablishAMessage getEstablishMessageA (Channel channel) {
+         LNEstablishAMessage message = new LNEstablishAMessage(
+-                channel.keyServer,
++                channel.getKeyServer(),
+                 channel.anchorTx,
+                 channel.channelStatus.revoHashServerCurrent,
+                 channel.channelStatus.revoHashServerNext,

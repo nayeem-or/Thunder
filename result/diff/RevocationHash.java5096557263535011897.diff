@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/RevocationHash.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/RevocationHash.java
+@@ -33,7 +33,7 @@
+  * Even though it is in theory the same as a payment hash, we use a different class, to avoid confusion. (which would lead to a direct loss of funds..)
+  */
+ public class RevocationHash {
+-    public int index;
++    private int index;
+     public byte[] secret;
+     public byte[] secretHash;
+ 
+@@ -104,4 +104,8 @@
+     public int hashCode () {
+         return Arrays.hashCode(secretHash);
+     }
++
++	public int getIndex() {
++		return index;
++	}
+ }

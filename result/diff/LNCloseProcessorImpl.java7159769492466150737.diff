@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -102,7 +102,7 @@
+     public Transaction getClosingTransaction (ChannelStatus channelStatus, float feePerByte) {
+         //For the sake of privacy (and simplicity) we use lexicographically ordering here, as defined in BIP69
+         Transaction transaction = new Transaction(Constants.getNetwork());
+-        transaction.addInput(channel.anchorTxHash, 0, Tools.getDummyScript());
++        transaction.addInput(channel.getAnchorTxHash(), 0, Tools.getDummyScript());
+ 
+         //TODO deduct the transaction fee correctly from both amounts
+         //TODO would be better to have another address on file that we can use here..

@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/crypto/CryptoTools.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/crypto/CryptoTools.java
+@@ -18,7 +18,7 @@
+ 
+     public static byte[] addHMAC (byte[] data, byte[] keyBytes) throws NoSuchAlgorithmException, InvalidKeyException {
+         SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "HmacSHA1");
+-        Mac mac = Mac.getInstance("HmacSHA1");
++        Mac mac = Mac.getInstance("HmacSHA256");
+         mac.init(keySpec);
+         byte[] result = mac.doFinal(data);
+ 

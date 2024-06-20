@@ -1,0 +1,10 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/nio/P2PClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/nio/P2PClient.java
+@@ -85,6 +85,6 @@
+         Bootstrap b = new Bootstrap();
+         b.option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000);
+         b.group(group).channel(NioSocketChannel.class).handler(new PipelineInitialiser(contextFactory, node));
+-        return b.connect(node.host, node.port).sync().channel();
++        return b.connect(node.host, node.getPort()).sync().channel();
+     }
+ }

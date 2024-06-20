@@ -1,0 +1,15 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/sync/SynchronizationHelper.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/sync/SynchronizationHelper.java
+@@ -45,7 +45,11 @@
+     }
+ 
+     public void addSyncClient (SyncClient syncClient) {
+-        synchronized (syncClientList) {
++        
++		/* ********OpenRefactory Warning********
++		 Synchronization should be on a private final field
++		*/
++		synchronized (syncClientList) {
+             syncClientList.add(syncClient);
+         }
+     }

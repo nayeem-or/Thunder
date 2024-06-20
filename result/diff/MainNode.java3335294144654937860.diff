@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
+@@ -55,7 +55,7 @@
+             ECKey key = new ECKey();
+             configuration.serverKey = Tools.bytesToHex(key.getPrivKeyBytes());
+             // TODO: Verify that the public key corresponds to the private key when loading config from file
+-            configuration.publicKey = key.getPublicKeyAsHex();
++            configuration.setPublicKey(key.getPublicKeyAsHex());
+             newConfiguration = true;
+             askForHostname(configuration);
+         }

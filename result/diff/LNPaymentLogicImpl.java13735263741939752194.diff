@@ -1,0 +1,29 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -53,7 +53,7 @@
+         for (PaymentData payment : allPayments) {
+             Coin value = Coin.valueOf(payment.amount);
+             Script script;
+-            if (payment.sending) {
++            if (payment.getSending()) {
+                 script = ScriptTools.getChannelTxOutputPaymentSending(keyServer, keyClient, revocationHash, payment.secret, payment.timestampRefund);
+             } else {
+                 script = ScriptTools.getChannelTxOutputPaymentReceiving(keyServer, keyClient, revocationHash, payment.secret, payment.timestampRefund);
+@@ -258,7 +258,7 @@
+     private static void checkRefundedPayments (ChannelUpdate newStatus) {
+         for (PaymentData paymentData : newStatus.refundedPayments) {
+             //We reversed the ChannelStatus, so if we are receiving, he is sending
+-            if (!paymentData.sending) {
++            if (!paymentData.getSending()) {
+                 throw new LNPaymentException("Trying to refund a sent payment");
+             }
+         }
+@@ -266,7 +266,7 @@
+ 
+     private static void checkRedeemedPayments (ChannelUpdate newStatus) {
+         for (PaymentData paymentData : newStatus.redeemedPayments) {
+-            if (!paymentData.sending) {
++            if (!paymentData.getSending()) {
+                 throw new LNPaymentException("Trying to redeem a sent payment?");
+             }
+             if (!paymentData.secret.verify()) {

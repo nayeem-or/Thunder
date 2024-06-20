@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/processor/implementations/management/ChannelBlockchainWatcher.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/processor/implementations/management/ChannelBlockchainWatcher.java
+@@ -60,7 +60,7 @@
+             public void execute (Transaction tx) {
+                 if (stopped) {
+                     return;
+-                } else if (LNEstablishProcessorImpl.MIN_CONFIRMATIONS == 0) {
++                } else if (LNEstablishProcessor.MIN_CONFIRMATIONS == 0) {
+                     channelManager.onAnchorDone(channel);
+                 }
+             }

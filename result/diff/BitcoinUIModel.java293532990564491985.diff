@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/utils/BitcoinUIModel.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/utils/BitcoinUIModel.java
+@@ -36,7 +36,7 @@
+     public ObservableList<Node> transactionsThunderRefunded = FXCollections.observableArrayList();
+     public ObservableList<Node> transactionsThunderOpen = FXCollections.observableArrayList();
+ 
+-    public BooleanProperty sendReceiveButtonEnabled = new SimpleBooleanProperty(true);
++    private BooleanProperty sendReceiveButtonEnabled = new SimpleBooleanProperty(true);
+     public StringProperty openChannelButtonText = new SimpleStringProperty();
+ 
+     private SimpleObjectProperty<Address> address = new SimpleObjectProperty<>();
+@@ -184,4 +184,8 @@
+         return balance;
+     }
+ 
++	public BooleanProperty getSendReceiveButtonEnabled() {
++		return sendReceiveButtonEnabled;
++	}
++
+ }
