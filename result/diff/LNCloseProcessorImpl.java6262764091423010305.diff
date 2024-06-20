@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -108,7 +108,7 @@
+         //TODO would be better to have another address on file that we can use here..
+         long feePerParty = (Tools.getTransactionFees(2, 2, feePerByte) / 2);
+         transaction.addOutput(Coin.valueOf(channelStatus.amountClient - feePerParty), channel.channelStatus.addressClient);
+-        transaction.addOutput(Coin.valueOf(channelStatus.amountServer - feePerParty), channel.channelStatus.addressServer);
++        transaction.addOutput(Coin.valueOf(channelStatus.amountServer - feePerParty), channel.channelStatus.getAddressServer());
+         return Tools.applyBIP69(transaction);
+     }
+ 

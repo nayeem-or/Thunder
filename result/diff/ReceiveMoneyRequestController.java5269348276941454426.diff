@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/ReceiveMoneyRequestController.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/ReceiveMoneyRequestController.java
+@@ -86,7 +86,7 @@
+             byte[] payload = paymentRequest.getPayload();
+ 
+             FieldAddress.setText(Tools.bytesToHex(payload));
+-            FieldHash.setText(Tools.bytesToHex(paymentRequest.paymentSecret.hash));
++            FieldHash.setText(Tools.bytesToHex(paymentRequest.getPaymentSecret().hash));
+ 
+             System.out.println(Tools.bytesToHex(payload));
+ 

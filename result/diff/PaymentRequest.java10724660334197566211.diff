@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/PaymentRequest.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/PaymentRequest.java
+@@ -6,7 +6,7 @@
+ 
+ public class PaymentRequest {
+     public long amount;
+-    public PaymentSecret paymentSecret;
++    private PaymentSecret paymentSecret;
+     public byte[] pubkey;
+ 
+     public byte[] getPayload () {
+@@ -19,4 +19,12 @@
+ 
+         return buffer.array();
+     }
++
++	public PaymentSecret getPaymentSecret() {
++		return paymentSecret;
++	}
++
++	public void setPaymentSecret(PaymentSecret paymentSecret) {
++		this.paymentSecret = paymentSecret;
++	}
+ }

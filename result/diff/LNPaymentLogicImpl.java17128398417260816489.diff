@@ -1,0 +1,61 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -71,7 +71,7 @@
+ 
+         int index = 2;
+         for (Transaction t : paymentTransactions) {
+-            TransactionSignature sig = Tools.getSignature(t, 0, channelTransaction.getOutput(index).getScriptBytes(), channel.keyServer);
++            TransactionSignature sig = Tools.getSignature(t, 0, channelTransaction.getOutput(index).getScriptBytes(), channel.getKeyServer());
+             signatureList.add(sig);
+             index++;
+         }
+@@ -182,12 +182,12 @@
+                     new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
+                     channel.channelStatus,
+                     channel.keyClient,
+-                    channel.keyServer);
++                    channel.getKeyServer());
+         } else {
+             return this.getChannelTransaction(
+                     new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
+                     channel.channelStatus.reverse(),
+-                    channel.keyServer,
++                    channel.getKeyServer(),
+                     channel.keyClient);
+         }
+     }
+@@ -206,14 +206,14 @@
+             return this.getPaymentTransactions(
+                     channelTx.getHash(),
+                     channel.channelStatus,
+-                    channel.keyServer,
++                    channel.getKeyServer(),
+                     channel.keyClient);
+         } else {
+             return this.getPaymentTransactions(
+                     channelTx.getHash(),
+                     channel.channelStatus.reverse(),
+                     channel.keyClient,
+-                    channel.keyServer);
++                    channel.getKeyServer());
+         }
+     }
+ 
+@@ -224,7 +224,7 @@
+ 
+         if (side == SERVER) {
+             this.checkSignatures(
+-                    channel.keyServer,
++                    channel.getKeyServer(),
+                     channel.keyClient,
+                     channelSignatures,
+                     channelTx,
+@@ -233,7 +233,7 @@
+         } else {
+             this.checkSignatures(
+                     channel.keyClient,
+-                    channel.keyServer,
++                    channel.getKeyServer(),
+                     channelSignatures,
+                     channelTx,
+                     paymentTx,

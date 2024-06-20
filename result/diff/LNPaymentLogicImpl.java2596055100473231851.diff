@@ -1,0 +1,22 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -39,7 +39,7 @@
+         transaction = addPayments(transaction, channelStatus, channelStatus.revoHashServerNext, server, client);
+ 
+         //Missing two signatures, max 146B
+-        long fee = (long) Math.ceil((transaction.getMessageSize() + SIGNATURE_SIZE) * channelStatus.feePerByte / 2);
++        long fee = (long) Math.ceil((transaction.getMessageSize() + SIGNATURE_SIZE) * channelStatus.getFeePerByte() / 2);
+         transaction.getOutput(0).setValue(Coin.valueOf(channelStatus.amountClient - fee));
+         transaction.getOutput(1).setValue(Coin.valueOf(channelStatus.amountServer - fee));
+ 
+@@ -140,8 +140,8 @@
+         if (newStatus.csvDelay < configuration.MIN_REVOCATION_DELAY || newStatus.csvDelay > configuration.MAX_REVOCATION_DELAY) {
+             throw new LNPaymentException("Revocation delay not within allowed boundaries. Is: " + newStatus.csvDelay);
+         }
+-        if (newStatus.feePerByte > configuration.MAX_FEE_PER_BYTE || newStatus.feePerByte < configuration.MIN_FEE_PER_BYTE) {
+-            throw new LNPaymentException("feePerByte not within allowed boundaries. Is: " + newStatus.feePerByte);
++        if (newStatus.getFeePerByte() > configuration.MAX_FEE_PER_BYTE || newStatus.getFeePerByte() < configuration.MIN_FEE_PER_BYTE) {
++            throw new LNPaymentException("feePerByte not within allowed boundaries. Is: " + newStatus.getFeePerByte());
+         }
+     }
+ 

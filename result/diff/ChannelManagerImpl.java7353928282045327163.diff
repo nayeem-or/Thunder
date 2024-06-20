@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/ChannelManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/ChannelManagerImpl.java
+@@ -102,7 +102,7 @@
+     @Override
+     public void closeChannel (Channel channel, ResultCommand callback) {
+ 
+-        NodeKey node = channel.nodeKeyClient;
++        NodeKey node = channel.getNodeKeyClient();
+         ChannelCloser channelCloser = channelCloserMap.get(node);
+ 
+         if (channelCloser != null) {
+@@ -145,7 +145,7 @@
+         //Do all kind of maintenance in here, like reconnecting to channels that disconnected..
+         List<Channel> openChannel = dbHandler.getOpenChannel();
+         for (Channel channel : openChannel) {
+-            NodeKey node = channel.nodeKeyClient;
++            NodeKey node = channel.getNodeKeyClient();
+             if (!connectionRegistry.isConnected(node)) {
+                 connectionManager.connect(node, ConnectionIntent.MAINTAIN_CHANNEL, new ConnectionListener());
+             }

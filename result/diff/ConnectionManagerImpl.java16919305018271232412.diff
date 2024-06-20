@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/ConnectionManagerImpl.java
+@@ -244,7 +244,7 @@
+                 System.out.println("BUILD CHANNEL WITH: " + randomNode);
+ 
+                 ClientObject node = ipObjectToNode(randomNode, OPEN_CHANNEL);
+-                channelManager.openChannel(node.nodeKey, new ChannelOpenListener());
++                channelManager.openChannel(node.getNodeKey(), new ChannelOpenListener());
+ 
+                 alreadyTried.add(randomNode);
+ 
+@@ -312,7 +312,7 @@
+         ClientObject node = new ClientObject();
+         node.isServer = false;
+         node.intent = intent;
+-        node.nodeKey = new NodeKey(ipObject.pubkey);
++        node.setNodeKey(new NodeKey(ipObject.pubkey));
+         node.host = ipObject.hostname;
+         node.port = ipObject.port;
+         return node;

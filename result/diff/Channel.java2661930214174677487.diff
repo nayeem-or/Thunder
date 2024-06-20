@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -73,7 +73,7 @@
+     public int minConfirmationAnchor;
+ 
+     public ChannelStatus channelStatus;
+-    public ChannelSignatures channelSignatures = new ChannelSignatures();
++    private ChannelSignatures channelSignatures = new ChannelSignatures();
+     /*
+      * Enum to mark the different phases.
+      *
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public ChannelSignatures getChannelSignatures() {
++		return channelSignatures;
++	}
++
++	public void setChannelSignatures(ChannelSignatures channelSignatures) {
++		this.channelSignatures = channelSignatures;
++	}
++
+     //endregion
+ }

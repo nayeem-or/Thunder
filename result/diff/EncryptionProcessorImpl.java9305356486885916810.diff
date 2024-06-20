@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
+@@ -65,7 +65,7 @@
+     }
+ 
+     private boolean shouldSendEncryptionKeyFirst () {
+-        return !node.isServer;
++        return !node.getIsServer();
+     }
+ 
+     private void sendInitialMessageIfNotSent () {

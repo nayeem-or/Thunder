@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/WalletSettingsController.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/WalletSettingsController.java
+@@ -121,7 +121,7 @@
+ 
+     private void askForPasswordAndRetry () {
+         Main.OverlayUI<WalletPasswordController> pwd = Main.instance.overlayUI("wallet_password.fxml");
+-        pwd.controller.aesKeyProperty().addListener((observable, old, cur) -> {
++        pwd.getController().aesKeyProperty().addListener((observable, old, cur) -> {
+             // We only get here if the user found the right password. If they don't or they cancel, we end up back on
+             // the main UI screen.
+             checkGuiThread();

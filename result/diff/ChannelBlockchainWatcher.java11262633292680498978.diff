@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/processor/implementations/management/ChannelBlockchainWatcher.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/processor/implementations/management/ChannelBlockchainWatcher.java
+@@ -106,7 +106,7 @@
+                 blockSince++;
+             }
+ 
+-            if (confirmations >= LNEstablishProcessorImpl.MIN_CONFIRMATIONS) {
++            if (confirmations >= LNEstablishProcessor.MIN_CONFIRMATIONS) {
+                 channelManager.onAnchorDone(channel);
+                 return true;
+             } else {

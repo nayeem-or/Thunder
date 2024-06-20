@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
+@@ -480,7 +480,7 @@
+             if (update != null) {
+                 for (PaymentData payment : update.newPayments) {
+                     PaymentWrapper paymentWrapper;
+-                    if (!payment.sending) {
++                    if (!payment.getSending()) {
+                         paymentWrapper = new PaymentWrapper();
+                         payments.add(paymentWrapper);
+                         paymentWrapper.paymentData = payment;

@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/PubkeyChannelObjectEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/PubkeyChannelObjectEntity.java
+@@ -33,7 +33,7 @@
+         txidAnchor = pubKeyChannelObject.txidAnchor;
+         signatureA = pubKeyChannelObject.signatureA;
+         signatureB = pubKeyChannelObject.signatureB;
+-        timestamp = pubKeyChannelObject.timestamp;
++        timestamp = pubKeyChannelObject.getTimestamp();
+     }
+ 
+     public PubkeyChannelObject toPubkeyChannelObject() {
+@@ -45,7 +45,7 @@
+         pubkeyChannelObject.txidAnchor = txidAnchor;
+         pubkeyChannelObject.signatureA = signatureA;
+         pubkeyChannelObject.signatureB = signatureB;
+-        pubkeyChannelObject.timestamp = timestamp;
++        pubkeyChannelObject.setTimestamp(timestamp);
+         return pubkeyChannelObject;
+     }
+ 

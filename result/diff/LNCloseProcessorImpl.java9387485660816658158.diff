@@ -1,0 +1,29 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -85,7 +85,7 @@
+         //Rather use a copy here to not run into concurrency issues somewhere else..
+         ChannelStatus temp = channelStatus.copy();
+ 
+-        long amountClient = temp.amountClient;
++        long amountClient = temp.getAmountClient();
+         long amountServer = temp.amountServer;
+ 
+         for (PaymentData paymentData : temp.paymentList) {
+@@ -93,7 +93,7 @@
+         }
+ 
+         temp.paymentList.clear();
+-        temp.amountClient = amountClient;
++        temp.setAmountClient(amountClient);
+         temp.amountServer = amountServer;
+ 
+         return temp;
+@@ -107,7 +107,7 @@
+         //TODO deduct the transaction fee correctly from both amounts
+         //TODO would be better to have another address on file that we can use here..
+         long feePerParty = (Tools.getTransactionFees(2, 2, feePerByte) / 2);
+-        transaction.addOutput(Coin.valueOf(channelStatus.amountClient - feePerParty), channel.channelStatus.addressClient);
++        transaction.addOutput(Coin.valueOf(channelStatus.getAmountClient() - feePerParty), channel.channelStatus.addressClient);
+         transaction.addOutput(Coin.valueOf(channelStatus.amountServer - feePerParty), channel.channelStatus.addressServer);
+         return Tools.applyBIP69(transaction);
+     }

@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
+@@ -78,7 +78,7 @@
+     public void relayPayment (NodeKey sender, PaymentData paymentData) {
+         try {
+             PeeledOnion peeledOnion = getPeeledOnion(paymentData);
+-            if (peeledOnion.isLastHop) {
++            if (peeledOnion.getIsLastHop()) {
+                 pingProcessor(sender);
+             } else {
+                 paymentData.onionObject = peeledOnion.onionObject;

@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-clientgui/src/main/java/wallettemplate/Main.java
++++ /workspace/source/thunder-clientgui/src/main/java/wallettemplate/Main.java
+@@ -46,7 +46,7 @@
+ 
+     private StackPane uiStack;
+     private Pane mainUI;
+-    public MainController controller;
++    private MainController controller;
+     public NotificationBarPane notificationBar;
+     public Stage mainWindow;
+ 
+@@ -272,4 +272,8 @@
+ 
+         launch(args);
+     }
++
++	public MainController getController() {
++		return controller;
++	}
+ }

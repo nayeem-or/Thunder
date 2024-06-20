@@ -1,0 +1,14 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/sync/SynchronizationHelper.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/sync/SynchronizationHelper.java
+@@ -97,7 +97,10 @@
+         int counter = 0;
+         while (!fullySynchronized()) {
+             Thread.sleep(100);
+-            synchronized (syncClientList) {
++            /* ********OpenRefactory Warning********
++			 Synchronization should be on a private final field
++			*/
++			synchronized (syncClientList) {
+                 for (SyncClient syncClient : syncClientList) {
+                     Integer currentSegment = currentlySyncing.get(syncClient);
+                     if (currentSegment != null) {

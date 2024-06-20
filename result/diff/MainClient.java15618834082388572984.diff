@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainClient.java
+@@ -95,7 +95,7 @@
+         paymentData.sending = true;
+         paymentData.secret = paymentSecret;
+         paymentData.amount = 100;
+-        paymentData.onionObject = onionObject;
++        paymentData.setOnionObject(onionObject);
+ 
+         LNPaymentHelper paymentHelper = contextFactory.getPaymentHelper();
+         paymentHelper.makePayment(paymentData);

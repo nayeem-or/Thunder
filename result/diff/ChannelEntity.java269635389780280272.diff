@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -77,7 +77,7 @@
+ 
+         Channel channel = new Channel();
+         channel.id = id;
+-        channel.nodeKeyClient = nodeKeyClient;
++        channel.setNodeKeyClient(nodeKeyClient);
+         channel.keyClient = keyClient;
+         channel.keyServer = keyServer;
+         channel.masterPrivateKeyClient = masterPrivateKeyClient;
+@@ -101,7 +101,7 @@
+     public ChannelEntity (Channel channel) {
+         id = channel.id;
+         hash = channel.getHash();
+-        nodeKeyClient = channel.nodeKeyClient;
++        nodeKeyClient = channel.getNodeKeyClient();
+         keyClient = channel.keyClient;
+         keyServer = channel.keyServer;
+         masterPrivateKeyClient = channel.masterPrivateKeyClient;

@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/peerseed/PeerSeedProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/peerseed/PeerSeedProcessorImpl.java
+@@ -99,7 +99,7 @@
+     private List<PubkeyIPObject> removeOurIPFromList (List<PubkeyIPObject> list) {
+         List<PubkeyIPObject> toRemove = new ArrayList<>();
+         for (PubkeyIPObject ip : list) {
+-            if (Arrays.equals(ip.pubkey, serverObject.pubKeyServer.getPubKey())) {
++            if (Arrays.equals(ip.pubkey, serverObject.getPubKeyServer().getPubKey())) {
+                 toRemove.add(ip);
+             }
+         }

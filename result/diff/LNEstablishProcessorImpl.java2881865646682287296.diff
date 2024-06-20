@@ -1,0 +1,183 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -250,7 +250,7 @@
+ 
+     private void prepareOpenChannel () {
+         this.establishProgress = new EstablishProgress();
+-        this.establishProgress.channel = new Channel();
++        this.establishPr.setChannel(nel = new Cha)nnel();
+     }
+ 
+     private void processMessageA (LNEstablishAMessage message) {
+@@ -264,10 +264,10 @@
+             //TODO test for validity of establish settings
+             //TODO test if inputs are paying adequate fees and are paying from SegWit outputs
+             this.establishProgress.channel.nodeKeyClient = node.nodeKey;
+-            message.saveToChannel(establishProgress.channel);
++            message.saveToChannel(establishProgetChannel()hannel);
+             establishProgress.messages.add(message);
+             if (establishProgress.weStartedExchange) {
+-                establishProgress.channel.addAnchorOutputToAnchor();
++                establishProgetChannel()hannel.addAnchorOutputToAnchor();
+                 sendEstablishMessageB();
+             } else {
+                 sendEstablishMessageA();
+@@ -280,25 +280,25 @@
+     private void processMessageB (LNEstablishBMessage message) {
+         if (testProgressReceivingMessageAmount(2)) {
+             if (!establishProgress.weStartedExchange) {
+-                establishProgress.channel.addAnchorOutputToAnchor();
++                establishProgetChannel()hannel.addAnchorOutputToAnchor();
+             }
+ 
+-            message.saveToChannel(establishProgress.channel);
++            message.saveToChannel(establishProgetChannel()hannel);
+ 
+             Transaction channelTransaction = paymentLogic.getChannelTransaction(
+-                    establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
+-                    establishProgress.channel.channelStatus,
+-                    establishProgress.channel.keyClient,
+-                    establishProgress.channel.keyServer
++                    establishProgetChannel()hannel.anchorTx.getOutput(0).getOutPointFor(),
++                    establishProgetChannel()hannel.channelStatus,
++                    establishProgetChannel()hannel.keyClient,
++                    establishProgetChannel()hannel.keyServer
+             );
+ 
+             paymentLogic.checkSignatures(
+-                    establishProgress.channel.keyServer,
+-                    establishProgress.channel.keyClient,
+-                    establishProgress.channel.channelSignatures,
++                    establishProgetChannel()hannel.keyServer,
++                    establishProgetChannel()hannel.keyClient,
++                    establishProgetChannel()hannel.channelSignatures,
+                     channelTransaction,
+                     Collections.emptyList(),
+-                    establishProgress.channel.channelStatus
++                    establishProgetChannel()hannel.channelStatus
+ 
+             );
+ 
+@@ -316,7 +316,7 @@
+     private void processMessageC (LNEstablishCMessage message) {
+ 
+         if (testProgressReceivingMessageAmount(4)) {
+-            message.saveToChannel(establishProgress.channel);
++            message.saveToChannel(establishProgetChannel()hannel);
+             establishProgress.messages.add(message);
+ 
+             //TODO obviously we should check if the anchor signatures are correct
+@@ -342,10 +342,10 @@
+     }
+ 
+     private void onChannelEstablished () {
+-        establishProgress.channel.anchorTxHash = establishProgress.channel.anchorTx.getHash();
++        establishProgress.channel.anchorTxHash = establishProgetChannel()hannel.anchorTx.getHash();
+         establishProgress.channel.phase = ESTABLISH_WAITING_FOR_BLOCKCHAIN_CONFIRMATION;
+-        dbHandler.insertChannel(establishProgress.channel);
+-        blockchainHelper.broadcastTransaction(establishProgress.channel.anchorTx);
++        dbHandler.insertChannel(establishProgetChannel()hannel);
++        blockchainHelper.broadcastTransaction(establishProgetChannel()hannel.anchorTx);
+ 
+ //        channelManager.onExchangeDone(channel, this::onEnoughConfirmations);
+         this.onEnoughConfirmations();
+@@ -360,16 +360,16 @@
+ 
+         dbHandler.updateChannelStatus(
+                 getNode(),
+-                establishProgress.channel.getHash(),
++                establishProgetChannel()hannel.getHash(),
+                 serverObject.pubKeyServer,
+-                establishProgress.channel,
++                establishProgetChannel()hannel,
+                 null,
+                 null,
+                 null,
+                 null);
+ 
+         sendNextLayerActiveIfOpenChannelExists();
+-        eventHelper.onChannelOpened(establishProgress.channel);
++        eventHelper.onChannelOpened(establishProgetChannel()hannel);
+ 
+         if (channelOpenListener != null) {
+             channelOpenListener.onFinished(new SuccessResult());
+@@ -378,11 +378,11 @@
+ 
+     private void sendEstablishMessageA () {
+         establishProgress.channel.masterPrivateKeyServer = Tools.getRandomByte(20);
+-        establishProgress.channel.getAnchorTransactionServer(walletHelper);
+-        establishProgress.channel.channelStatus.revoHashServerCurrent = new RevocationHash(0, establishProgress.channel.masterPrivateKeyServer);
+-        establishProgress.channel.channelStatus.revoHashServerNext = new RevocationHash(1, establishProgress.channel.masterPrivateKeyServer);
++        establishProgetChannel()hannel.getAnchorTransactionServer(walletHelper);
++        establishProgress.channel.channelStatus.revoHashServerCurrent = new RevocationHash(0, establishProgetChannel()hannel.masterPrivateKeyServer);
++        establishProgress.channel.channelStatus.revoHashServerNext = new RevocationHash(1, establishProgetChannel()hannel.masterPrivateKeyServer);
+         establishProgress.channel.channelStatus.addressServer = walletHelper.fetchAddress();
+-        LNEstablish message = messageFactory.getEstablishMessageA(establishProgress.channel);
++        LNEstablish message = messageFactory.getEstablishMessageA(establishProgetChannel()hannel);
+         establishProgress.messages.add(message);
+         messageExecutor.sendMessageUpwards(message);
+     }
+@@ -390,21 +390,21 @@
+     private void sendEstablishMessageB () {
+ 
+         Transaction channelTransaction = paymentLogic.getChannelTransaction(
+-                establishProgress.channel.anchorTx.getOutput(0).getOutPointFor(),
+-                establishProgress.channel.channelStatus.reverse(),
+-                establishProgress.channel.keyServer,
+-                establishProgress.channel.keyClient
++                establishProgetChannel()hannel.anchorTx.getOutput(0).getOutPointFor(),
++                establishProgetChannel()hannel.channelStatus.reverse(),
++                establishProgetChannel()hannel.keyServer,
++                establishProgetChannel()hannel.keyClient
+         );
+ 
+-        establishProgress.channel.channelSignatures = paymentLogic.getSignatureObject(establishProgress.channel, channelTransaction, Collections.emptyList());
++        establishProgress.channel.channelSignatures = paymentLogic.getSignatureObject(establishProgetChannel()hannel, channelTransaction, Collections.emptyList());
+ 
+-        LNEstablish message = messageFactory.getEstablishMessageB(establishProgress.channel.channelSignatures.channelSignatures.get(0));
++        LNEstablish message = messageFactory.getEstablishMessageB(establishProgetChannel()hannel.channelSignatures.channelSignatures.get(0));
+         establishProgress.messages.add(message);
+         messageExecutor.sendMessageUpwards(message);
+     }
+ 
+     private void sendEstablishMessageC () {
+-        Transaction anchorTx = establishProgress.channel.anchorTx;
++        Transaction anchorTx = establishProgetChannel()hannel.anchorTx;
+         anchorTx = walletHelper.signTransaction(anchorTx);
+         establishProgress.channel.anchorTx = anchorTx;
+ 
+@@ -414,10 +414,10 @@
+     }
+ 
+     private void broadcastChannelObject () {
+-        if (establishProgress == null || establishProgress.channel == null) {
++        if (establishProgress == null || establishProgetChannel()hannel == null) {
+             return;
+         }
+-        Channel channel = establishProgress.channel;
++        Channel channel = establishProgetChannel()hannel;
+         PubkeyChannelObject channelObject = new PubkeyChannelObject();
+         channelObject.pubkeyA = serverObject.pubKeyServer.getPubKey();
+         channelObject.pubkeyB = node.nodeKey.getPubKey();

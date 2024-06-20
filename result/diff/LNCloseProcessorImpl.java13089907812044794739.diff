@@ -1,0 +1,40 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/close/LNCloseProcessorImpl.java
+@@ -107,8 +107,8 @@
+         //TODO deduct the transaction fee correctly from both amounts
+         //TODO would be better to have another address on file that we can use here..
+         long feePerParty = (Tools.getTransactionFees(2, 2, feePerByte) / 2);
+-        transaction.addOutput(Coin.valueOf(channelStatus.amountClient - feePerParty), channel.channelStatus.addressClient);
+-        transaction.addOutput(Coin.valueOf(channelStatus.amountServer - feePerParty), channel.channelStatus.addressServer);
++        transaction.addOutput(Coin.valueOf(channelStatus.amountClient - feePerParty), channel.getChannelStatus().addressClient);
++        transaction.addOutput(Coin.valueOf(channelStatus.amountServer - feePerParty), channel.getChannelStatus().addressServer);
+         return Tools.applyBIP69(transaction);
+     }
+ 
+@@ -147,7 +147,7 @@
+ 
+     private void calculateAndSendCloseMessage () {
+         Channel channel = getChannel();
+-        ChannelStatus closingStatus = getChannelStatus(channel.channelStatus);
++        ChannelStatus closingStatus = getChannelStatus(channel.getChannelStatus());
+ 
+         //This gets called as well when the connection breaks down and we connect back to the other party
+         //For now we take it that we may negotiate a close with a different fee
+@@ -204,7 +204,7 @@
+ 
+     private void processChannelClose (LNCloseAMessage message) {
+         checkClosingMessage(message);
+-        Transaction transaction = getClosingTransaction(channel.channelStatus, message.feePerByte);
++        Transaction transaction = getClosingTransaction(channel.getChannelStatus(), message.feePerByte);
+         List<TransactionSignature> signatures = getTransactionSignatures(transaction);
+ 
+         isBlocked = true;
+@@ -247,7 +247,7 @@
+         this.channel = getChannel();
+         //TODO fix working out the correct reverse strategy for channels that still have payments included
+         //ChannelStatus statusSender = getChannelStatus(channel.channelUpdate.reverse()).reverse();
+-        ChannelStatus status = channel.channelStatus;
++        ChannelStatus status = channel.getChannelStatus();
+ 
+         Transaction transaction = getClosingTransaction(status, message.feePerByte);
+ 

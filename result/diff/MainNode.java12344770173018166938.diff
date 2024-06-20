@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
+@@ -202,7 +202,7 @@
+ 
+             if (s.equals("0")) {
+                 return null;
+-            } else if (s.equals("")) {
++            } else if (s.isEmpty()) {
+                 return nodeList;
+             } else if (s.equals(server.pubKeyServer.getPublicKeyAsHex())) {
+                 System.out.println("You cannot connect to yourself..");
