@@ -37,7 +37,7 @@ jobs:
       
     - name: Run icr engine
       run: |
-       ${{ github.workspace }}/script/icr-cli -source ${{ github.workspace }} -result ${{ github.workspace }}/result -language java -license H8LW-V566-APNJ-TFOR
+       ${{ github.workspace }}/script/icr-cli -source ${{ github.workspace }} -result ${{ github.workspace }}/result -language java -license H8LW-V566-APNJ-TFOR -short
       shell: bash
     - name: Commit and push changes
       uses: stefanzweifel/git-auto-commit-action@v5
