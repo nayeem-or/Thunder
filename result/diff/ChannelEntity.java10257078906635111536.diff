@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/ChannelEntity.java
+@@ -304,7 +304,7 @@
+         channelStatus.revoHashServerNext = revoHashServerNext == null ? null
+                 : revoHashServerNext.toRevocationHash();
+         channelStatus.addressClient = addressClient;
+-        channelStatus.addressServer = addressServer;
++        channelStatus.setAddressServer(addressServer);
+         return channelStatus;
+     }
+ 
+@@ -326,7 +326,7 @@
+             revoHashServerNext = new RevocationHashEmbedded(channelStatus.revoHashServerNext);
+         }
+         addressClient = channelStatus.addressClient;
+-        addressServer = channelStatus.addressServer;
++        addressServer = channelStatus.getAddressServer();
+         if (channelStatus.paymentList != null) {
+             channelStatus.paymentList.forEach(payment -> addPayment(new PaymentDataEntity(payment)));
+         }

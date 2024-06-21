@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/HibernateHandler.java
+@@ -488,7 +488,7 @@
+                         paymentWrapper.statusSender = EMBEDDED;
+ 
+                         PeeledOnion onion = null;
+-                        onion = onionHelper.loadMessage(keyServer, payment.onionObject);
++                        onion = onionHelper.loadMessage(keyServer, payment.getOnionObject());
+ 
+                         if (secrets.contains(payment.secret)) {
+                             paymentWrapper.paymentData.secret = getPaymentSecret(payment.secret);

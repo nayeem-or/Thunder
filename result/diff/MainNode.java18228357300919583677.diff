@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/MainNode.java
+@@ -177,7 +177,7 @@
+         System.out.print(">>>> ");
+         Scanner sc = new Scanner(System.in);
+         String s = sc.nextLine();
+-        if (!s.equals("")) {
++        if (!s.isEmpty()) {
+             configuration.hostnameServer = s;
+         }
+     }

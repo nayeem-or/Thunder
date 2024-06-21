@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
+@@ -70,7 +70,7 @@
+ 
+     private void sendInitialMessageIfNotSent () {
+         if (!encSent) {
+-            executor.sendMessageUpwards(messageFactory.getEncryptionInitialMessage(node.ephemeralKeyServer.getPubKey()));
++            executor.sendMessageUpwards(messageFactory.getEncryptionInitialMessage(node.getEphemeralKeyServer().getPubKey()));
+             encSent = true;
+         }
+     }
+@@ -113,7 +113,7 @@
+             EncryptionInitialMessage encryptionInitial = (EncryptionInitialMessage) message;
+ 
+             node.ephemeralKeyClient = ECKey.fromPublicOnly(encryptionInitial.key);
+-            node.ecdhKeySet = ECDH.getSharedSecret(node.ephemeralKeyServer, node.ephemeralKeyClient);
++            node.ecdhKeySet = ECDH.getSharedSecret(node.getEphemeralKeyServer(), node.ephemeralKeyClient);
+ 
+             sendInitialMessageIfNotSent();
+             onKeyExchangeFinished();

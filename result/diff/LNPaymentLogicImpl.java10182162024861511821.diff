@@ -1,0 +1,61 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentLogicImpl.java
+@@ -107,7 +107,7 @@
+     @Override
+     public void checkUpdate (LNConfiguration configuration, Channel channel, ChannelUpdate channelUpdate) {
+         //We can have a lot of operations here, like adding/removing payments. We need to verify if they are correct.
+-        ChannelStatus oldStatus = channel.channelStatus;
++        ChannelStatus oldStatus = channel.getChannelStatus();
+         ChannelStatus newStatus = oldStatus.copy();
+         newStatus.applyUpdate(channelUpdate);
+ 
+@@ -180,13 +180,13 @@
+         if (side == SERVER) {
+             return this.getChannelTransaction(
+                     new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
+-                    channel.channelStatus,
++                    channel.getChannelStatus(),
+                     channel.keyClient,
+                     channel.keyServer);
+         } else {
+             return this.getChannelTransaction(
+                     new TransactionOutPoint(Constants.getNetwork(), 0, channel.anchorTxHash),
+-                    channel.channelStatus.reverse(),
++                    channel.getChannelStatus().reverse(),
+                     channel.keyServer,
+                     channel.keyClient);
+         }
+@@ -205,13 +205,13 @@
+         if (side == SERVER) {
+             return this.getPaymentTransactions(
+                     channelTx.getHash(),
+-                    channel.channelStatus,
++                    channel.getChannelStatus(),
+                     channel.keyServer,
+                     channel.keyClient);
+         } else {
+             return this.getPaymentTransactions(
+                     channelTx.getHash(),
+-                    channel.channelStatus.reverse(),
++                    channel.getChannelStatus().reverse(),
+                     channel.keyClient,
+                     channel.keyServer);
+         }
+@@ -229,7 +229,7 @@
+                     channelSignatures,
+                     channelTx,
+                     paymentTx,
+-                    channel.channelStatus);
++                    channel.getChannelStatus());
+         } else {
+             this.checkSignatures(
+                     channel.keyClient,
+@@ -237,7 +237,7 @@
+                     channelSignatures,
+                     channelTx,
+                     paymentTx,
+-                    channel.channelStatus.reverse());
++                    channel.getChannelStatus().reverse());
+         }
+     }
+ 

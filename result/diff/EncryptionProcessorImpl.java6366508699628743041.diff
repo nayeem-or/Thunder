@@ -1,0 +1,13 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/EncryptionProcessorImpl.java
+@@ -112,8 +112,8 @@
+         } else {
+             EncryptionInitialMessage encryptionInitial = (EncryptionInitialMessage) message;
+ 
+-            node.ephemeralKeyClient = ECKey.fromPublicOnly(encryptionInitial.key);
+-            node.ecdhKeySet = ECDH.getSharedSecret(node.ephemeralKeyServer, node.ephemeralKeyClient);
++            node.setEphemeralKeyClient(ECKey.fromPublicOnly(encryptionInitial.key));
++            node.ecdhKeySet = ECDH.getSharedSecret(node.ephemeralKeyServer, node.getEphemeralKeyClient());
+ 
+             sendInitialMessageIfNotSent();
+             onKeyExchangeFinished();

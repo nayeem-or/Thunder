@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/RevocationHashEmbedded.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/RevocationHashEmbedded.java
+@@ -17,7 +17,7 @@
+     public RevocationHashEmbedded () {}
+ 
+     public RevocationHashEmbedded (RevocationHash revocationHash) {
+-        index = revocationHash.index;
++        index = revocationHash.getIndex();
+         secret = revocationHash.secret;
+         secretHash = revocationHash.secretHash;
+     }

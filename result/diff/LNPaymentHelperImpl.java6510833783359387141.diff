@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/LNPaymentHelperImpl.java
+@@ -82,7 +82,7 @@
+                 pingProcessor(sender);
+             } else {
+                 paymentData.onionObject = peeledOnion.onionObject;
+-                NodeKey receiver = peeledOnion.nextHop;
++                NodeKey receiver = peeledOnion.getNextHop();
+                 if (!pingProcessor(receiver)) {
+                     if (dbHandler.getOpenChannel(receiver).size() == 0) {
+                         //No payment channel with next hop, will just send back
+@@ -104,7 +104,7 @@
+         try {
+             PeeledOnion peeledOnion = getPeeledOnion(paymentData);
+             paymentData.onionObject = peeledOnion.onionObject;
+-            NodeKey nextHop = peeledOnion.nextHop;
++            NodeKey nextHop = peeledOnion.getNextHop();
+ 
+             if (processorList.containsKey(nextHop)) {
+                 dbHandler.addPayment(nextHop, paymentData);

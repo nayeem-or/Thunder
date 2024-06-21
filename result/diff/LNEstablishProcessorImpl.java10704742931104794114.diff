@@ -1,0 +1,33 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/channel/establish/LNEstablishProcessorImpl.java
+@@ -109,7 +109,7 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -119,10 +119,10 @@
+  *  In:
+  *  txInA1
+  *  txInA2
+- *  [?]
++ *  [???]
+  *  txInB1
+  *  txInB2
+- *  [?]
++ *  [???]
+  *
+  *  Out:
+  *  2-of-2
+@@ -430,7 +430,7 @@
+         ChannelStatusObject statusObject = new ChannelStatusObject();
+         statusObject.pubkeyA = serverObject.pubKeyServer.getPubKey();
+         statusObject.pubkeyB = node.nodeKey.getPubKey();
+-        statusObject.timestamp = Tools.currentTime();
++  statusObject.setTimestamp(amp = Tools.current)Time();
+ 
+         broadcastHelper.broadcastNewObject(channelObject);
+         broadcastHelper.broadcastNewObject(statusObject);

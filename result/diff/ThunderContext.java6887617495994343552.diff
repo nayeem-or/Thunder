@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
+@@ -127,7 +127,7 @@
+         PaymentSecret secret = new PaymentSecret(Tools.getRandomByte(20));
+         dbHandler.addPaymentSecret(secret);
+         PaymentRequest paymentRequest = new PaymentRequest();
+-        paymentRequest.amount = amount;
++        paymentRequest.setAmount(amount);
+         paymentRequest.paymentSecret = secret;
+         paymentRequest.pubkey = node.pubKeyServer.getPubKey();
+         return paymentRequest;

@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
+@@ -110,7 +110,7 @@
+             LNPaymentHelper paymentHelper = contextFactory.getPaymentHelper();
+ 
+             PaymentData paymentData = new PaymentData();
+-            paymentData.amount = amount;
++            paymentData.setAmount(amount);
+             paymentData.onionObject = object;
+             paymentData.secret = secret;
+             paymentData.timestampOpen = Tools.currentTime();

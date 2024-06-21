@@ -1,0 +1,31 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/HttpClient.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/bciapi/HttpClient.java
+@@ -75,7 +75,27 @@
+         HttpURLConnection conn = null;
+ 
+         try {
+-            conn = (HttpURLConnection) url.openConnection();
++            
++			/* ********OpenRefactory Warning********
++			 Possible null pointer dereference!
++			 Path: 
++				File: HttpClient.java, Line: 59
++					URL url=null;
++					Variable url is initialized null.
++				File: HttpClient.java, Line: 67
++					url=new URL(BASE_URL + resource);
++					Variable url is allocated.
++				File: HttpClient.java, Line: 69
++					url=new URL(BASE_URL + resource + '?'+ encodedParams);
++					Variable url is allocated.
++				File: HttpClient.java, Line: 72
++					url=new URL(BASE_URL + resource);
++					Variable url is allocated.
++				File: HttpClient.java, Line: 78
++					conn=(HttpURLConnection)url.openConnection();
++					url is referenced in method invocation.
++			*/
++			conn = (HttpURLConnection) url.openConnection();
+             conn.setRequestMethod(requestMethod);
+             conn.setConnectTimeout(TIMEOUT_MS);
+ 

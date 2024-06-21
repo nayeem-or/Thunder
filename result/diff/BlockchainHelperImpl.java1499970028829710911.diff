@@ -1,0 +1,15 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/BlockchainHelperImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/blockchain/BlockchainHelperImpl.java
+@@ -97,7 +97,11 @@
+     }
+ 
+     public void init () {
+-        synchronized (initialized) {
++        
++		/* ********OpenRefactory Warning********
++		 Synchronization should be on a private final field
++		*/
++		synchronized (initialized) {
+             if (!initialized) {
+                 try {
+                     blockStore = new SPVBlockStore(Constants.getNetwork(), new File("blockheaders"));

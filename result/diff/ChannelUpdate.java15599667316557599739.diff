@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/messages/ChannelUpdate.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/messages/ChannelUpdate.java
+@@ -54,7 +54,7 @@
+ 
+     private List<PaymentData> reverseSending (List<PaymentData> paymentDataList) {
+         for (PaymentData payment : paymentDataList) {
+-            payment.sending = !payment.sending;
++            payment.setSending(!payment.getSending());
+         }
+         return paymentDataList;
+     }

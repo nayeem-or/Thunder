@@ -1,0 +1,25 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/Channel.java
+@@ -70,7 +70,7 @@
+      */
+     public Sha256Hash anchorTxHash;
+     public Transaction anchorTx;
+-    public int minConfirmationAnchor;
++    private int minConfirmationAnchor;
+ 
+     public ChannelStatus channelStatus;
+     public ChannelSignatures channelSignatures = new ChannelSignatures();
+@@ -232,5 +232,13 @@
+ 
+     }
+ 
++	public int getMinConfirmationAnchor() {
++		return minConfirmationAnchor;
++	}
++
++	public void setMinConfirmationAnchor(int minConfirmationAnchor) {
++		this.minConfirmationAnchor = minConfirmationAnchor;
++	}
++
+     //endregion
+ }

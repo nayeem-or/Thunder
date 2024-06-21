@@ -1,0 +1,13 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
+@@ -114,8 +114,8 @@
+             paymentData.onionObject = object;
+             paymentData.secret = secret;
+             paymentData.timestampOpen = Tools.currentTime();
+-            paymentData.timestampRefund = Tools.currentTime() + route.size()
+-                    * configuration.MAX_REFUND_DELAY * configuration.MAX_OVERLAY_REFUND;
++            paymentData.setTimestampRefund(Tools.currentTime() + route.size()
++                    * configuration.MAX_REFUND_DELAY * configuration.MAX_OVERLAY_REFUND);
+ 
+             paymentHelper.makePayment(paymentData);
+         } catch (Exception e) {

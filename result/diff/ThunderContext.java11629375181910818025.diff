@@ -1,0 +1,28 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/ThunderContext.java
+@@ -93,14 +93,14 @@
+ 
+     public void makePayment (byte[] receiver, long amount, PaymentSecret secret, ResultCommand resultCallback) {
+         try {
+-            if (Arrays.equals(receiver, node.pubKeyServer.getPubKey())) {
++            if (Arrays.equals(receiver, node.getPubKeyServer().getPubKey())) {
+                 throw new LNPaymentException("Can't send to yourself!");
+             }
+ 
+             LNOnionHelper onionHelper = contextFactory.getOnionHelper();
+             LNRoutingHelper routingHelper = contextFactory.getLNRoutingHelper();
+ 
+-            List<byte[]> route = routingHelper.getRoute(node.pubKeyServer.getPubKey(), receiver, 1000L, 1f, 1f, 1f);
++            List<byte[]> route = routingHelper.getRoute(node.getPubKeyServer().getPubKey(), receiver, 1000L, 1f, 1f, 1f);
+             if (route.size() == 0) {
+                 throw new LNPaymentException("No route found..");
+             }
+@@ -129,7 +129,7 @@
+         PaymentRequest paymentRequest = new PaymentRequest();
+         paymentRequest.amount = amount;
+         paymentRequest.paymentSecret = secret;
+-        paymentRequest.pubkey = node.pubKeyServer.getPubKey();
++        paymentRequest.pubkey = node.getPubKeyServer().getPubKey();
+         return paymentRequest;
+     }
+ 

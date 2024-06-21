@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/MessageEncrypterImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/low/encryption/MessageEncrypterImpl.java
+@@ -27,7 +27,7 @@
+     @Override
+     public Message decrypt (EncryptedMessage message, ECDHKeySet ecdhKeySet) {
+         CryptoTools.checkHMAC(message.hmac, message.payload, ecdhKeySet.hmacKey);
+-        byte[] bytes = CryptoTools.decryptAES_CTR(message.payload, ecdhKeySet.encryptionKey, ecdhKeySet.ivClient, ecdhKeySet.counterIn);
++        byte[] bytes = CryptoTools.decryptAES_CTR(message.payload, ecdhKeySet.encryptionKey, ecdhKeySet.ivClient, ecdhKeySet.getCounterIn());
+ 
+         return serializater.deserializeMessage(bytes);
+     }

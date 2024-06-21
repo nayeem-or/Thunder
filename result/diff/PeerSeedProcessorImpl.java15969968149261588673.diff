@@ -1,0 +1,11 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/peerseed/PeerSeedProcessorImpl.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/peerseed/PeerSeedProcessorImpl.java
+@@ -84,7 +84,7 @@
+             fireIPEvents(list);
+ 
+             if (!node.isServer && node.intent == ConnectionIntent.GET_IPS) {
+-                node.resultCallback.execute(new PeerSeedResult());
++                node.getResultCallback().execute(new PeerSeedResult());
+                 messageExecutor.closeConnection();
+             }
+         }

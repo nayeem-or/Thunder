@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/PaymentRequest.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/helper/PaymentRequest.java
+@@ -5,7 +5,7 @@
+ import java.nio.ByteBuffer;
+ 
+ public class PaymentRequest {
+-    public long amount;
++    private long amount;
+     public PaymentSecret paymentSecret;
+     public byte[] pubkey;
+ 
+@@ -19,4 +19,8 @@
+ 
+         return buffer.array();
+     }
++
++	public void setAmount(long amount) {
++		this.amount = amount;
++	}
+ }

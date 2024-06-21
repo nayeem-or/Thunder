@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/PubkeyIPObject.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/middle/broadcasting/types/PubkeyIPObject.java
+@@ -13,7 +13,7 @@
+ import java.util.*;
+ 
+ public class PubkeyIPObject extends P2PDataObject {
+-    public String hostname;
++    private String hostname;
+     public int port;
+     public byte[] pubkey;
+     public byte[] signature;
+@@ -167,4 +167,12 @@
+                 ", timestamp=" + timestamp +
+                 '}';
+     }
++
++	public String getHostname() {
++		return hostname;
++	}
++
++	public void setHostname(String hostname) {
++		this.hostname = hostname;
++	}
+ }

@@ -1,0 +1,24 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/communication/layer/high/payments/PaymentData.java
+@@ -24,7 +24,7 @@
+     public boolean sending;
+     public long amount;
+ 
+-    public PaymentSecret secret;
++    private PaymentSecret secret;
+     public int timestampOpen;
+     public int timestampRefund; //timestamp at which the other party will consider this payment refunded
+ 
+@@ -84,4 +84,12 @@
+             throw new RuntimeException(e);
+         }
+     }
++
++	public PaymentSecret getSecret() {
++		return secret;
++	}
++
++	public void setSecret(PaymentSecret secret) {
++		this.secret = secret;
++	}
+ }

@@ -1,0 +1,20 @@
+--- /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/PaymentDataEntity.java
++++ /workspace/source/thunder-core/src/main/java/network/thunder/core/database/hibernate/PaymentDataEntity.java
+@@ -29,7 +29,7 @@
+         amount = paymentData.amount;
+         secret = paymentData.secret.secret;
+         secretHash = paymentData.secret.hash;
+-        timestampOpen = paymentData.timestampOpen;
++        timestampOpen = paymentData.getTimestampOpen();
+         timestampRefund = paymentData.timestampRefund;
+         onionObject = paymentData.onionObject;
+     }
+@@ -39,7 +39,7 @@
+         paymentData.sending = sending;
+         paymentData.amount = amount;
+         paymentData.secret = new PaymentSecret(secret, secretHash);
+-        paymentData.timestampOpen = timestampOpen;
++        paymentData.setTimestampOpen(timestampOpen);
+         paymentData.timestampRefund = timestampRefund;
+         paymentData.onionObject = onionObject;
+         return paymentData;
